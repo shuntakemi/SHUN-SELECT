@@ -185,7 +185,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
+/* =========================================
+   02.5 INDEX HEADER SCROLL CONTROL
+========================================= */
 
+const indexHeader = document.querySelector(".index-header");
+
+if (indexHeader && window.matchMedia("(max-width: 767px)").matches) {
+
+  let lastScrollY = window.scrollY;
+  let idleTimer;
+
+  function showIndexHeader() {
+    indexHeader.classList.remove("is-hidden");
+  }
+
+  function hideIndexHeader() {
+    indexHeader.classList.add("is-hidden");
+  }
+
+  function resetIdleTimer() {
+    clearTimeout(idleTimer);
+
+    idleTimer = setTimeout(() => {
+      showIndexHeader();
+    }, 2000);
+  }
+
+  window.addEventListener("scroll", () => {
+
+    const currentScrollY = window.scrollY;
+    const difference = currentScrollY - lastScrollY;
+
+    if (currentScrollY < 80) {
+      showIndexHeader();
+    } else if (difference > 5) {
+      // 下方向：ヘッダーを隠す
+      hideIndexHeader();
+    } else if (difference < -5) {
+      // 上方向：ヘッダーを表示
+      showIndexHeader();
+    }
+
+    lastScrollY = currentScrollY;
+
+    resetIdleTimer();
+
+  }, { passive: true });
+
+  resetIdleTimer();
+
+}
 
   /* =========================================
      03. CATEGORY IMAGE CURSOR
