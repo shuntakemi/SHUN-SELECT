@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -14,58 +14,45 @@
 
 <body>
 
-  <!-- =====================================
-       WHITE SITE CONTENT
-  ====================================== -->
-
   <div class="site-shell">
 
     <!-- HEADER -->
     <header class="header">
-
       <div class="header-inner">
 
         <h1 class="site-logo">
           <a href="#">SELECT SHOP</a>
         </h1>
 
+        <div class="header-tools">
+          <a href="#" aria-label="Search">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="10.8" cy="10.8" r="6.8"/>
+              <path d="m16 16 5 5"/>
+            </svg>
+          </a>
 
+          <a href="#" aria-label="Login">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="7.5" r="3.5"/>
+              <path d="M4.5 21c.5-4.2 3.4-6.5 7.5-6.5s7 2.3 7.5 6.5"/>
+            </svg>
+          </a>
 
-        
-<div class="header-tools">
-  <a href="#" aria-label="Search">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="10.8" cy="10.8" r="6.8"/>
-      <path d="m16 16 5 5"/>
-    </svg>
-  </a>
-
-  <a href="#" aria-label="Login">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="12" cy="7.5" r="3.5"/>
-      <path d="M4.5 21c.5-4.2 3.4-6.5 7.5-6.5s7 2.3 7.5 6.5"/>
-    </svg>
-  </a>
-
-  <a href="#" aria-label="Cart">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M2.5 3h2.8l2.2 12.2h11.8l2-9H6"/>
-      <circle cx="9" cy="19.5" r="1.2"/>
-      <circle cx="18" cy="19.5" r="1.2"/>
-    </svg>
-  </a>
-</div>
-
+          <a href="#" aria-label="Cart">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M2.5 3h2.8l2.2 12.2h11.8l2-9H6"/>
+              <circle cx="9" cy="19.5" r="1.2"/>
+              <circle cx="18" cy="19.5" r="1.2"/>
+            </svg>
+          </a>
+        </div>
 
       </div>
-
     </header>
 
 
-    <!-- =====================================
-         MAIN VISUAL / 5 BRAND SLIDESHOW
-    ====================================== -->
-
+    <!-- MAIN VISUAL / 5 BRAND SLIDESHOW -->
     <section class="main-visual" aria-label="Featured brands">
 
       <div class="brand-slideshow">
@@ -133,94 +120,73 @@
     </section>
 
 
-    <!-- =====================================
-         MAIN PAGE LAYOUT
-    ====================================== -->
-
+    <!-- MAIN PAGE LAYOUT -->
     <div class="page-layout">
 
+      <!-- INDEX：重複ヘッダーは置かない -->
+      <aside class="sidebar">
+        <div class="index">
+<!-- INDEX HEADER -->
+<div class="index-header">
 
-      <!-- LEFT INDEX -->
-      
-<!-- LEFT INDEX -->
-<aside class="sidebar">
+  <h2 class="index-logo">
+    <a href="#">SELECT SHOP</a>
+  </h2>
 
-  <div class="index">
+  <div class="header-tools">
 
-    <!-- INDEX HEADER -->
-    <div class="index-header">
+    <a href="#" aria-label="Search">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="10.8" cy="10.8" r="6.8"/>
+        <path d="m16 16 5 5"/>
+      </svg>
+    </a>
 
-      <h2 class="index-logo">
-        <a href="#">SELECT SHOP</a>
-      </h2>
+    <a href="#" aria-label="Login">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="7.5" r="3.5"/>
+        <path d="M4.5 21c.5-4.2 3.4-6.5 7.5-6.5s7 2.3 7.5 6.5"/>
+      </svg>
+    </a>
 
-      <div class="header-tools">
-
-        <!-- SEARCH -->
-        <a href="#" aria-label="Search">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="10.8" cy="10.8" r="6.8"/>
-            <path d="m16 16 5 5"/>
-          </svg>
-        </a>
-
-        <!-- LOGIN -->
-        <a href="#" aria-label="Login">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="7.5" r="3.5"/>
-            <path d="M4.5 21c.5-4.2 3.4-6.5 7.5-6.5s7 2.3 7.5 6.5"/>
-          </svg>
-        </a>
-
-        <!-- CART -->
-        <a href="#" aria-label="Cart">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M2.5 3h2.8l2.2 12.2h11.8l2-9H6"/>
-            <circle cx="9" cy="19.5" r="1.2"/>
-            <circle cx="18" cy="19.5" r="1.2"/>
-          </svg>
-        </a>
-
-      </div>
-    </div>
-
-    <!-- INDEX -->
-    <p class="index-title">INDEX</p>
-
-    <nav class="index-nav">
-
-      <a href="#new-arrivals" class="index-link active">
-        NEW ARRIVALS
-      </a>
-
-      <a href="#brands" class="index-link">
-        FEATURED BRANDS
-      </a>
-
-      <a href="#styling" class="index-link">
-        STYLING
-      </a>
-
-      <a href="#categories" class="index-link">
-        ITEM CATEGORY
-      </a>
-
-    </nav>
+    <a href="#" aria-label="Cart">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M2.5 3h2.8l2.2 12.2h11.8l2-9H6"/>
+        <circle cx="9" cy="19.5" r="1.2"/>
+        <circle cx="18" cy="19.5" r="1.2"/>
+      </svg>
+    </a>
 
   </div>
+</div>
+          <p class="index-title">INDEX</p>
 
-</aside>
+          <nav class="index-nav">
+            <a href="#new-arrivals" class="index-link active">
+              NEW ARRIVALS
+            </a>
 
+            <a href="#brands" class="index-link">
+              FEATURED BRANDS
+            </a>
+
+            <a href="#styling" class="index-link">
+              STYLING
+            </a>
+
+            <a href="#categories" class="index-link">
+              ITEM CATEGORY
+            </a>
+          </nav>
+
+        </div>
+      </aside>
 
 
       <!-- RIGHT CONTENT -->
       <main class="main-content">
 
-
-        <!-- =====================================
-             01 NEW ARRIVALS
-        ====================================== -->
-
+        <!-- 01 NEW ARRIVALS -->
         <section id="new-arrivals" class="content-section">
 
           <div class="section-heading">
@@ -277,10 +243,7 @@
         </section>
 
 
-        <!-- =====================================
-             02 FEATURED BRANDS
-        ====================================== -->
-
+        <!-- 02 FEATURED BRANDS -->
         <section id="brands" class="content-section">
 
           <div class="section-heading">
@@ -443,10 +406,7 @@
         </section>
 
 
-        <!-- =====================================
-             03 STYLING
-        ====================================== -->
-
+        <!-- 03 STYLING -->
         <section id="styling" class="content-section">
 
           <div class="section-heading">
@@ -495,46 +455,40 @@
         </section>
 
 
-        <!-- =====================================
-             04 ITEM CATEGORY
-        ====================================== -->
+        <!-- 04 ITEM CATEGORY -->
+        <section class="content-section category-section" id="categories">
 
-       <section class="content-section category-section" id="categories">
+          <div class="section-heading">
+            <div>
+              <h2>ITEM CATEGORY</h2>
+              <p>アイテムカテゴリー</p>
+            </div>
+          </div>
 
-  <div class="section-heading">
-    <div>
-      <h2>ITEM CATEGORY</h2>
-      <p>アイテムカテゴリー</p>
-    </div>
-  </div>
+          <div class="category-list">
 
-  <div class="category-list">
+            <div class="category-row">
+              <a href="CATEGORY01.html" class="category-item" data-image="images/category-wear.jpg">WEAR</a>
+              <span class="category-slash">/</span>
+              <a href="CATEGORY02.html" class="category-item" data-image="images/category-bags.jpg">BAGS &amp; WALLETS</a>
+              <span class="category-slash">/</span>
+              <a href="CATEGORY03.html" class="category-item" data-image="images/category-shoes.jpg">SHOES</a>
+            </div>
 
-    <div class="category-row">
-      <a href="CATEGORY01.html" class="category-item" data-image="images/category-wear.jpg">WEAR</a>
-      <span class="category-slash">/</span>
-      <a href="CATEGORY02.html" class="category-item" data-image="images/category-bags.jpg">BAGS &amp; WALLETS</a>
-      <span class="category-slash">/</span>
-      <a href="CATEGORY03.html" class="category-item" data-image="images/category-shoes.jpg">SHOES</a>
-    </div>
+            <div class="category-row">
+              <a href="CATEGORY04.html" class="category-item" data-image="images/category-accessories.jpg">ACCESSORIES</a>
+              <span class="category-slash">/</span>
+              <a href="CATEGORY05.html" class="category-item" data-image="images/category-goods.jpg">FASHION GOODS</a>
+              <span class="category-slash">/</span>
+              <a href="CATEGORY06.html" class="category-item" data-image="images/category-lifestyle.jpg">LIFESTYLE</a>
+            </div>
 
-    <div class="category-row">
-      <a href="CATEGORY04.html" class="category-item" data-image="images/category-accessories.jpg">ACCESSORIES</a>
-      <span class="category-slash">/</span>
-      <a href="CATEGORY05.html" class="category-item" data-image="images/category-goods.jpg">FASHION GOODS</a>
-      <span class="category-slash">/</span>
-      <a href="CATEGORY06.html" class="category-item" data-image="images/category-lifestyle.jpg">LIFESTYLE</a>
-    </div>
+          </div>
 
-  </div>
-
-</section>
+        </section>
 
 
-        <!-- =====================================
-             05 TOPICS
-        ====================================== -->
-
+        <!-- 05 TOPICS -->
         <section id="topics" class="content-section">
 
           <div class="section-heading">
@@ -579,10 +533,7 @@
         </section>
 
 
-        <!-- =====================================
-             06 BRAND LIST
-        ====================================== -->
-
+        <!-- 06 BRAND LIST -->
         <section id="brand-list" class="content-section">
 
           <div class="section-heading">
@@ -593,7 +544,6 @@
           </div>
 
           <div class="brand-list">
-
             <a href="FEATURED BRANDS01.html">BRAND NAME 01</a>
             <a href="FEATURED BRANDS02.html">BRAND NAME 02</a>
             <a href="FEATURED BRANDS03.html">BRAND NAME 03</a>
@@ -606,16 +556,12 @@
             <a href="FEATURED BRANDS10.html">BRAND NAME 10</a>
             <a href="FEATURED BRANDS11.html">BRAND NAME 11</a>
             <a href="FEATURED BRANDS12.html">BRAND NAME 12</a>
-
           </div>
 
         </section>
 
 
-        <!-- =====================================
-             07 SHOP CARD
-        ====================================== -->
-
+        <!-- 07 SHOP CARD -->
         <section id="shop-info" class="shop-card-section">
 
           <div class="shop-card-inner">
@@ -645,10 +591,7 @@
   </div>
 
 
-  <!-- =====================================
-       FOOTER / SCROLL REVEAL
-  ====================================== -->
-
+  <!-- FOOTER -->
   <footer class="footer">
 
     <div class="footer-information">
@@ -678,14 +621,11 @@
 
     </div>
 
-
     <div class="footer-big-logo">
       <a href="#">SELECT SHOP</a>
     </div>
 
-
     <div class="footer-bottom">
-
       <p>© SELECT SHOP. ALL RIGHTS RESERVED.</p>
 
       <div class="footer-bottom-links">
@@ -693,7 +633,6 @@
         <a href="#">SHOPPING GUIDE</a>
         <a href="#">CONTACT</a>
       </div>
-
     </div>
 
   </footer>

@@ -1,4 +1,3 @@
-
 /* =========================================
    00. RESET & BASIC
 ========================================= */
@@ -22,7 +21,6 @@ body {
     "Helvetica Neue",
     Arial,
     sans-serif;
-
   font-size: 14px;
   line-height: 1.6;
   color: #111;
@@ -115,7 +113,6 @@ button {
   stroke-linejoin: round;
 }
 
-
 .header a:hover {
   opacity: 0.5;
 }
@@ -177,9 +174,9 @@ button {
 
 .slide-caption span {
   display: block;
+  margin-bottom: 10px;
   font-size: 10px;
   letter-spacing: 0.15em;
-  margin-bottom: 10px;
 }
 
 .slide-caption h2 {
@@ -202,11 +199,11 @@ button {
 .slide-pagination button {
   width: 7px;
   height: 7px;
+  padding: 0;
   border: 1px solid #fff;
   border-radius: 50%;
   background: transparent;
   cursor: pointer;
-  padding: 0;
 }
 
 .slide-pagination button.active {
@@ -252,10 +249,10 @@ button {
 }
 
 .index-title {
+  margin-bottom: 35px;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.15em;
-  margin-bottom: 35px;
 }
 
 .index-nav {
@@ -277,8 +274,6 @@ button {
   transition: color 0.2s ease;
 }
 
-/* INDEXの小さな丸 */
-
 .index-link::before {
   content: "";
   width: 5px;
@@ -289,8 +284,6 @@ button {
   transition: background 0.2s ease;
 }
 
-/* ホバー時 */
-
 .index-link:hover {
   color: #111;
 }
@@ -298,8 +291,6 @@ button {
 .index-link:hover::before {
   background: #999;
 }
-
-/* アクティブ時 */
 
 .index-link.active {
   color: #111;
@@ -347,10 +338,10 @@ button {
 
 .heading-link {
   flex-shrink: 0;
+  padding-bottom: 4px;
+  color: #777;
   font-size: 9px;
   letter-spacing: 0.08em;
-  color: #777;
-  padding-bottom: 4px;
 }
 
 .heading-link:hover {
@@ -440,6 +431,22 @@ button {
   color: #111;
 }
 
+.brand-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.brand-footer a {
+  color: #888;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.brand-footer a:hover {
+  color: #111;
+}
+
 
 /* =========================================
    07. STYLING
@@ -477,13 +484,10 @@ button {
    08. ITEM CATEGORY
 ========================================= */
 
-/* ITEM CATEGORY */
-
 .category-section {
   padding: 100px 0;
 }
 
-/* 3つずつ2段に配置 */
 .category-list {
   display: flex;
   flex-direction: column;
@@ -498,7 +502,6 @@ button {
   gap: 0 22px;
 }
 
-/* カテゴリー名 */
 .category-item {
   color: #111;
   font-size: 27px;
@@ -512,22 +515,23 @@ button {
   color: #999;
 }
 
-/* スラッシュ */
 .category-slash {
   color: #999;
   font-size: 23px;
   font-weight: 300;
 }
 
-/* カスタムカーソル：JSでbody直下に配置して、常に最前面に表示 */
+
+/* CATEGORY CUSTOM CURSOR */
+
 .category-cursor {
   position: fixed;
   top: 0;
   left: 0;
   width: 200px;
   height: 200px;
-  border-radius: 50%;
   overflow: hidden;
+  border-radius: 50%;
   background-color: #eee;
   background-size: cover;
   background-position: center;
@@ -556,32 +560,6 @@ button {
   }
 }
 
-/* スマートフォン */
-@media (max-width: 768px) {
-  .category-section {
-    padding: 60px 0;
-  }
-
-  .category-list {
-    gap: 16px;
-  }
-
-  .category-row {
-    gap: 8px 12px;
-  }
-
-  .category-item {
-    font-size: 17px;
-  }
-
-  .category-slash {
-    font-size: 16px;
-  }
-
-  .category-cursor {
-    display: none;
-  }
-}
 
 /* =========================================
    09. TOPICS
@@ -711,7 +689,7 @@ button {
 
 
 /* =========================================
-   12. FOOTER / SCROLL REVEAL
+   12. FOOTER
 ========================================= */
 
 .footer {
@@ -723,8 +701,6 @@ button {
   color: #fff;
   background: #252525;
 }
-
-/* 上部の4つの情報 */
 
 .footer-information {
   display: grid;
@@ -758,8 +734,6 @@ button {
   color: #999;
 }
 
-/* 巨大ロゴ */
-
 .footer-big-logo {
   width: 100%;
   margin-top: 65px;
@@ -777,8 +751,6 @@ button {
   text-align: center;
   white-space: nowrap;
 }
-
-/* 最下部 */
 
 .footer-bottom {
   display: flex;
@@ -804,12 +776,23 @@ button {
 
 
 /* =========================================
-   13. TABLET
+   13. SECTION FOOTER
+========================================= */
+
+.section-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 28px;
+}
+
+
+/* =========================================
+   14. TABLET
 ========================================= */
 
 @media (max-width: 1024px) {
 
-    .header-tools {
+  .header-tools {
     gap: 12px;
   }
 
@@ -826,10 +809,6 @@ button {
     gap: 10px;
   }
 
-  .category-item a {
-    min-height: 90px;
-  }
-
   .brand-list {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     column-gap: 16px;
@@ -844,7 +823,7 @@ button {
 
 
 /* =========================================
-   14. MOBILE
+   15. MOBILE
 ========================================= */
 
 @media (max-width: 767px) {
@@ -893,86 +872,6 @@ button {
     padding: 45px 5%;
   }
 
-  /* INDEXは横並びにして残す */
-
-  
-  /* INDEX：横並び＋アクティブライン */
-
-  
-/* INDEX：4項目を画面内に均等配置 */
-
-
-/* INDEX：4項目を画面内に均等配置 */
-
-
-/* INDEX：コンパクトな4列表示 */
-
-.sidebar {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  margin: -45px -5% 35px;
-  padding: 0 3%;
-  background: rgba(255, 255, 255, 0.98);
-  border-bottom: 1px solid #eee;
-}
-
-.index {
-  padding: 0;
-}
-
-.index-title {
-  display: none;
-}
-
-.index-nav {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  align-items: center;
-  gap: 0;
-  padding: 9px 0;
-  overflow: hidden;
-}
-
-.index-link {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-width: 0;
-  padding: 0 1px 4px;
-  color: #aaa;
-  font-size: 7px;
-  font-weight: 500;
-  letter-spacing: 0;
-  white-space: nowrap;
-}
-
-.index-link::before {
-  display: none;
-}
-
-.index-link::after {
-  content: "";
-  position: absolute;
-  left: 20%;
-  bottom: 0;
-  width: 60%;
-  height: 1px;
-  background: #111;
-  transform: scaleX(0);
-  transition: transform 0.2s ease;
-}
-
-.index-link.active {
-  color: #111;
-}
-
-.index-link.active::after {
-  transform: scaleX(1);
-}
-
 
   /* CONTENT */
 
@@ -993,14 +892,24 @@ button {
 
   /* CATEGORY */
 
-  .category-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .category-section {
+    padding: 60px 0;
   }
 
-  .category-item a {
-    min-height: 75px;
-    font-size: 10px;
-    cursor: pointer;
+  .category-list {
+    gap: 16px;
+  }
+
+  .category-row {
+    gap: 8px 12px;
+  }
+
+  .category-item {
+    font-size: 17px;
+  }
+
+  .category-slash {
+    font-size: 16px;
   }
 
   .category-cursor {
@@ -1087,7 +996,7 @@ button {
 
 
 /* =========================================
-   15. REDUCED MOTION
+   16. REDUCED MOTION
 ========================================= */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1102,271 +1011,29 @@ button {
 
 }
 
-/* VIEW links at the bottom of each section */
-.section-footer {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 28px;
-}
-
-.brand-footer {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 16px;
-}
-
-.brand-footer a {
-  color: #888;
-  font-size: 9px;
-  letter-spacing: 0.08em;
-}
-
-.brand-footer a:hover {
-  color: #111;
-}
-
-
 
 /* =========================================
-   INDEX HEADER & NAVIGATION
+   17. MOBILE HEADER + INDEX
+   MOBILE ONLY
 ========================================= */
 
-/* INDEX全体 */
-.index {
-  position: sticky;
-  top: 45px;
-  padding-right: 35px;
-}
-
-/* INDEX上部のヘッダー */
-.index-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  width: 100%;
-  margin-bottom: 55px;
-}
-
-/* ロゴ */
-.index-logo {
-  flex-shrink: 0;
-  font-size: 17px;
-  font-weight: 650;
-  letter-spacing: -0.04em;
-  white-space: nowrap;
-}
-
-/* アイコン */
-.index-header .header-tools {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.index-header .header-tools a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #111;
-}
-
-.index-header .header-tools svg {
-  display: block;
-  width: 16px;
-  height: 16px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* INDEX見出し */
-.index-title {
-  margin-bottom: 35px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-}
-
-/* INDEXリンク */
-.index-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-
-.index-link {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: fit-content;
-  color: #999;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  transition: color 0.2s ease;
-}
-
-.index-link::before {
-  content: "";
-  width: 5px;
-  height: 5px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: transparent;
-}
-
-.index-link:hover,
-.index-link.active {
-  color: #111;
-}
-
-.index-link:hover::before {
-  background: #999;
-}
-
-.index-link.active::before {
-  background: #111;
-}
-
-
-/* =========================================
-   MOBILE INDEX
-========================================= */
-
-@media (max-width: 767px) {
-
-  /* INDEXの帯 */
-  .sidebar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: block;
-    width: calc(100% + 10%);
-    margin: -45px -5% 35px;
-    padding: 0 5%;
-    background: rgba(255, 255, 255, 0.98);
-    border-bottom: 1px solid #eee;
-  }
-
-  .index {
-    position: static;
-    padding: 0;
-  }
-
-  /* ヘッダー */
-  .index-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 52px;
-    max-height: 52px;
-    margin: 0;
-    overflow: hidden;
-    opacity: 1;
-    transition:
-      min-height 0.35s ease,
-      max-height 0.35s ease,
-      opacity 0.25s ease;
-  }
-
-  .index-logo {
-    font-size: 16px;
-  }
-
-  .index-header .header-tools {
-    gap: 15px;
-  }
-
-  .index-header .header-tools svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  /* ヘッダーを隠す */
-  .index-header.is-hidden {
-    min-height: 0;
-    max-height: 0;
-    opacity: 0;
-  }
-
-  /* INDEX見出しは非表示 */
-  .index-title {
-    display: none;
-  }
-
-  /* INDEXの帯 */
-  .index-nav {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    align-items: center;
-    gap: 0;
-    padding: 9px 0;
-    overflow: hidden;
-  }
-
-  .index-link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-width: 0;
-    padding: 0 1px 4px;
-    color: #aaa;
-    font-size: 7px;
-    font-weight: 500;
-    letter-spacing: 0;
-    white-space: nowrap;
-  }
-
-  .index-link::before {
-    display: none;
-  }
-
-  .index-link::after {
-    content: "";
-    position: absolute;
-    left: 20%;
-    bottom: 0;
-    width: 60%;
-    height: 1px;
-    background: #111;
-    transform: scaleX(0);
-    transition: transform 0.2s ease;
-  }
-
-  .index-link.active {
-    color: #111;
-  }
-
-  .index-link.active::after {
-    transform: scaleX(1);
-  }
-
-}
-
-
-/* =========================================
-   MOBILE HEADER & INDEX FINAL FIX
-========================================= */
-
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
 
   /* -----------------------------------------
-     HEADER：画面上部に固定
+     MAIN HEADER
+     元のヘッダーを画面上部に固定
   ----------------------------------------- */
 
   .header {
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
-    z-index: 101;
+    z-index: 1001;
     display: flex;
     align-items: center;
     width: 100%;
     height: 64px;
+    min-height: 64px;
     padding: 0 5%;
     background: #fff;
   }
@@ -1375,9 +1042,9 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: nowrap;
     width: 100%;
     gap: 15px;
-    flex-wrap: nowrap;
   }
 
   .site-logo {
@@ -1397,12 +1064,13 @@ button {
 
 
   /* -----------------------------------------
-     MAIN VISUAL：最初の画面を大きく使う
+     MAIN VISUAL
+     最初の画面をメインビジュアルに使う
   ----------------------------------------- */
 
   .brand-slideshow {
     height: calc(100svh - 64px);
-    min-height: 400px;
+    min-height: 0;
     max-height: none;
   }
 
@@ -1412,7 +1080,7 @@ button {
 
 
   /* -----------------------------------------
-     PAGE LAYOUT：INDEXを最初から重ねない
+     PAGE LAYOUT
   ----------------------------------------- */
 
   .page-layout {
@@ -1422,25 +1090,32 @@ button {
 
 
   /* -----------------------------------------
-     INDEX：ヘッダーのすぐ下に追従
+     INDEX
+     元のヘッダーの直下に追従
   ----------------------------------------- */
 
   .sidebar {
+    position: -webkit-sticky;
     position: sticky;
     top: 64px;
-    z-index: 100;
+    z-index: 1000;
     display: block;
     width: calc(100% + 10%);
     margin: 0 -5% 35px;
     padding: 0 5%;
     background: rgba(255, 255, 255, 0.98);
     border-bottom: 1px solid #eee;
-    overflow: visible;
   }
 
   .index {
     position: static;
     padding: 0;
+  }
+
+  /* INDEXの重複ヘッダーは非表示 */
+  .sidebar .index-header,
+  .index-header {
+    display: none !important;
   }
 
   .index-title {
@@ -1502,49 +1177,64 @@ button {
 
 }
 
-
 /* =========================================
-   MOBILE ONLY HEADER FIX
+   PC INDEX HEADER
 ========================================= */
 
-@media (max-width: 767px) {
+@media screen and (min-width: 768px) {
 
-  /* 上部のメインヘッダーは固定 */
-  .header {
-    position: sticky;
-    top: 0;
-    z-index: 101;
+  .index-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 55px;
   }
 
-  /* INDEX側の重複ヘッダーだけ非表示 */
+  .index-logo {
+    flex-shrink: 0;
+    font-size: 17px;
+    font-weight: 650;
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+  }
+
+  .index-header .header-tools {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .index-header .header-tools a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #111;
+  }
+
+  .index-header .header-tools svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE: HIDE INDEX HEADER
+========================================= */
+
+@media screen and (max-width: 767px) {
+
   .sidebar .index-header {
     display: none !important;
   }
 
-  /* INDEXをメインヘッダーの直下に固定 */
-  .sidebar {
-    position: sticky;
-    top: 64px;
-    z-index: 100;
-  }
-
-}
-
-
-/* =========================================
-   MOBILE: HIDE DUPLICATE INDEX HEADER
-========================================= */
-
-@media screen and (max-width: 767px) {
-
-  body .site-shell .page-layout .sidebar .index .index-header {
-    display: none !important;
-  }
-}
-
-/* MOBILE: HIDE DUPLICATE INDEX HEADER */
-@media screen and (max-width: 767px) {
-  .index-header {
-    display: none !important;
-  }
 }
