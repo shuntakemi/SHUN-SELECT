@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================
@@ -136,68 +137,115 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-/* =========================================
-   02.5 MOBILE HEADER SCROLL CONTROL
-========================================= */
 
-const mainHeader = document.querySelector(".header");
-const sidebar = document.querySelector(".sidebar");
+  /* =========================================
+     03. MOBILE HEADER SCROLL CONTROL
+     MOBILE ONLY
+  ========================================= */
 
-if (
-  mainHeader &&
-  sidebar &&
-  window.matchMedia("(max-width: 767px)").matches
-) {
-  let lastScrollY = window.scrollY;
-  let isConnected = false;
+  const mainHeader = document.querySelector(".header");
+  const sidebar = document.querySelector(".sidebar");
 
-  function showHeader() {
-    mainHeader.classList.remove("is-hidden");
-    sidebar.classList.remove("is-header-hidden");
-  }
+  const mobileQuery = window.matchMedia(
+    "(max-width: 767px)"
+  );
 
-  function hideHeader() {
-    mainHeader.classList.add("is-hidden");
-    sidebar.classList.add("is-header-hidden");
-  }
+  if (mainHeader && sidebar) {
 
-  function handleScroll() {
-    const currentScrollY = window.scrollY;
-    const headerHeight = mainHeader.offsetHeight;
-    const sidebarTop = sidebar.getBoundingClientRect().top;
+    let lastScrollY = window.scrollY;
+    let accumulatedDelta = 0;
+    let currentDirection = 0;
 
-    // INDEXがヘッダーに到達したか判定
-    if (sidebarTop <= headerHeight + 2) {
-      isConnected = true;
-    } else {
-      isConnected = false;
-      showHeader();
+    function showHeader() {
+      mainHeader.classList.remove("is-hidden");
+      sidebar.classList.remove("is-header-hidden");
     }
 
-    // 連結後だけスクロール方向でヘッダーを制御
-    if (isConnected) {
+    function hideHeader() {
+      mainHeader.classList.add("is-hidden");
+      sidebar.classList.add("is-header-hidden");
+    }
+
+    function resetScrollControl() {
+      showHeader();
+
+      accumulatedDelta = 0;
+      currentDirection = 0;
+      lastScrollY = window.scrollY;
+    }
+
+    function handleScroll() {
+
+      // PC版では制御しない
+      if (!mobileQuery.matches) {
+        resetScrollControl();
+        return;
+      }
+
+      const currentScrollY = window.scrollY;
+      const headerHeight = mainHeader.offsetHeight;
+      const sidebarTop = sidebar.getBoundingClientRect().top;
+
+      // INDEXがヘッダーの直下に到達したか判定
+      const isConnected =
+        sidebarTop <= headerHeight + 2;
+
+      // INDEXと連結するまではヘッダーを表示
+      if (!isConnected) {
+        showHeader();
+
+        accumulatedDelta = 0;
+        currentDirection = 0;
+        lastScrollY = currentScrollY;
+
+        return;
+      }
+
       const difference = currentScrollY - lastScrollY;
 
-      if (difference > 5) {
+      lastScrollY = currentScrollY;
+
+      // スクロールしていない場合は何もしない
+      if (difference === 0) {
+        return;
+      }
+
+      const direction = Math.sign(difference);
+
+      // スクロール方向が変わったら蓄積量をリセット
+      if (direction !== currentDirection) {
+        currentDirection = direction;
+        accumulatedDelta = 0;
+      }
+
+      accumulatedDelta += difference;
+
+      // 下方向に一定量スクロールしたらヘッダーを隠す
+      if (accumulatedDelta >= 8) {
         hideHeader();
-      } else if (difference < -5) {
+      }
+
+      // 上方向に一定量スクロールしたらヘッダーを表示
+      if (accumulatedDelta <= -8) {
         showHeader();
       }
     }
 
-    lastScrollY = currentScrollY;
+    window.addEventListener("scroll", handleScroll, {
+      passive: true
+    });
+
+    window.addEventListener("resize", () => {
+      resetScrollControl();
+      handleScroll();
+    });
+
+    handleScroll();
   }
-
-  window.addEventListener("scroll", handleScroll, {
-    passive: true
-  });
-
-  handleScroll();
-}
 
 
   /* =========================================
-     03. CATEGORY IMAGE CURSOR
+     04. CATEGORY IMAGE CURSOR
   ========================================= */
 
   const categoryItems =
