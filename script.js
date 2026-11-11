@@ -136,6 +136,65 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+/* =========================================
+   02.5 MOBILE HEADER SCROLL CONTROL
+========================================= */
+
+const mainHeader = document.querySelector(".header");
+const sidebar = document.querySelector(".sidebar");
+
+if (
+  mainHeader &&
+  sidebar &&
+  window.matchMedia("(max-width: 767px)").matches
+) {
+  let lastScrollY = window.scrollY;
+  let isConnected = false;
+
+  function showHeader() {
+    mainHeader.classList.remove("is-hidden");
+    sidebar.classList.remove("is-header-hidden");
+  }
+
+  function hideHeader() {
+    mainHeader.classList.add("is-hidden");
+    sidebar.classList.add("is-header-hidden");
+  }
+
+  function handleScroll() {
+    const currentScrollY = window.scrollY;
+    const headerHeight = mainHeader.offsetHeight;
+    const sidebarTop = sidebar.getBoundingClientRect().top;
+
+    // INDEXがヘッダーに到達したか判定
+    if (sidebarTop <= headerHeight + 2) {
+      isConnected = true;
+    } else {
+      isConnected = false;
+      showHeader();
+    }
+
+    // 連結後だけスクロール方向でヘッダーを制御
+    if (isConnected) {
+      const difference = currentScrollY - lastScrollY;
+
+      if (difference > 5) {
+        hideHeader();
+      } else if (difference < -5) {
+        showHeader();
+      }
+    }
+
+    lastScrollY = currentScrollY;
+  }
+
+  window.addEventListener("scroll", handleScroll, {
+    passive: true
+  });
+
+  handleScroll();
+}
+
 
   /* =========================================
      03. CATEGORY IMAGE CURSOR
