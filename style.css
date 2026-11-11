@@ -1529,3 +1529,16 @@ button {
   }
 
 }
+
+
+/* =========================================
+   MOBILE: HIDE DUPLICATE INDEX HEADER
+========================================= */
+
+@media screen and (max-width: 767px) {
+
+  body .site-shell .page-layout .sidebar .index .index-header {
+    display: none !important;
+  }
+
+}
