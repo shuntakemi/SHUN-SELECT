@@ -876,13 +876,16 @@ button {
 
   /* INDEXは横並びにして残す */
 
+  
+  /* INDEX：横並び＋アクティブライン */
+
   .sidebar {
     position: sticky;
     top: 0;
     z-index: 10;
     margin: -45px -5% 45px;
-    padding: 15px 5%;
-    background: rgba(255, 255, 255, 0.96);
+    padding: 0 5%;
+    background: rgba(255, 255, 255, 0.97);
     border-bottom: 1px solid #eee;
   }
 
@@ -890,22 +893,71 @@ button {
     padding: 0;
   }
 
+  /* INDEXの見出しは非表示 */
   .index-title {
-    margin-bottom: 12px;
-    font-size: 10px;
+    display: none;
   }
 
   .index-nav {
+    display: flex;
     flex-direction: row;
-    gap: 20px;
+    align-items: center;
+    gap: 26px;
     overflow-x: auto;
     white-space: nowrap;
-    padding-bottom: 4px;
+    padding: 15px 0 13px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .index-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .index-link {
-    font-size: 9px;
+    position: relative;
+    display: inline-flex;
+    flex: 0 0 auto;
+    width: auto;
+    padding: 0 0 5px;
+    color: #aaa;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    transition: color 0.2s ease;
   }
+
+  /* PC版の丸印を非表示 */
+  .index-link::before {
+    display: none;
+  }
+
+  /* アクティブライン */
+  .index-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: #111;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+
+  .index-link.active {
+    color: #111;
+  }
+
+  .index-link.active::after {
+    transform: scaleX(1);
+  }
+
+  .index-link:hover {
+    color: #111;
+  }
+
 
 
   /* CONTENT */
