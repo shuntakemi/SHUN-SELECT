@@ -882,6 +882,9 @@ button {
   
 /* INDEX：4項目を画面内に均等配置 */
 
+
+/* INDEX：4項目を画面内に均等配置 */
+
 .sidebar {
   position: sticky;
   top: 0;
@@ -947,6 +950,7 @@ button {
 .index-link.active::after {
   transform: scaleX(1);
 }
+
 
   /* CONTENT */
 
