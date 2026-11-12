@@ -1284,19 +1284,87 @@ button {
    08. MENU CHILDREN
 ----------------------------------------- */
 
-.menu-subnav {
-  display: none;
-  flex-direction: column;
-  gap: 14px;
+/* =========================================
+   MENU CHILDREN ANIMATION
+   PC ONLY
+========================================= */
 
-  margin: 16px 0 5px 7px;
-  padding: 2px 0 2px 17px;
+@media screen and (min-width: 768px) {
 
-  border-left: 1px solid #ddd;
-}
+  .menu-subnav {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 
-.menu-group.is-open .menu-subnav {
-  display: flex;
+    max-height: 0;
+    overflow: hidden;
+
+    margin: 0 0 0 7px;
+    padding: 0 0 0 17px;
+
+    border-left: 1px solid #ddd;
+
+    opacity: 0;
+    transform: translateY(-10px);
+
+    transition:
+      max-height 0.4s ease,
+      opacity 0.3s ease,
+      transform 0.4s ease,
+      margin 0.4s ease,
+      padding 0.4s ease;
+  }
+
+  /* 展開時 */
+  .menu-group.is-open .menu-subnav {
+    max-height: 500px;
+
+    margin: 16px 0 5px 7px;
+    padding: 2px 0 2px 17px;
+
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* リンクが上から順番に現れる */
+  .menu-sub-link {
+    opacity: 0;
+    transform: translateY(-6px);
+
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .menu-group.is-open .menu-sub-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .menu-group.is-open .menu-sub-link:nth-child(1) {
+    transition-delay: 0.05s;
+  }
+
+  .menu-group.is-open .menu-sub-link:nth-child(2) {
+    transition-delay: 0.1s;
+  }
+
+  .menu-group.is-open .menu-sub-link:nth-child(3) {
+    transition-delay: 0.15s;
+  }
+
+  .menu-group.is-open .menu-sub-link:nth-child(4) {
+    transition-delay: 0.2s;
+  }
+
+  .menu-group.is-open .menu-sub-link:nth-child(5) {
+    transition-delay: 0.25s;
+  }
+
+  .menu-group.is-open .menu-sub-link:nth-child(6) {
+    transition-delay: 0.3s;
+  }
+
 }
 
 .menu-sub-link {
@@ -1310,6 +1378,40 @@ button {
   text-decoration: none;
 
   transition: transform 0.25s ease;
+}
+
+/* =========================================
+   CLOSE ANIMATION
+   下から順番に消える
+========================================= */
+
+@media screen and (min-width: 768px) {
+
+  /* 閉じるとき：下の項目から順番に */
+  .menu-group:not(.is-open) .menu-sub-link:nth-child(1) {
+    transition-delay: 0.30s;
+  }
+
+  .menu-group:not(.is-open) .menu-sub-link:nth-child(2) {
+    transition-delay: 0.25s;
+  }
+
+  .menu-group:not(.is-open) .menu-sub-link:nth-child(3) {
+    transition-delay: 0.20s;
+  }
+
+  .menu-group:not(.is-open) .menu-sub-link:nth-child(4) {
+    transition-delay: 0.15s;
+  }
+
+  .menu-group:not(.is-open) .menu-sub-link:nth-child(5) {
+    transition-delay: 0.10s;
+  }
+
+  .menu-group:not(.is-open) .menu-sub-link:nth-child(6) {
+    transition-delay: 0.05s;
+  }
+
 }
 
 .menu-sub-link:hover {
@@ -1516,6 +1618,204 @@ button {
 
   .index-link.active::after {
     transform: scaleX(1);
+  }
+
+}
+
+/* =========================================
+   HEADER LOGO POSITION
+========================================= */
+
+/* PC版 */
+@media screen and (min-width: 768px) {
+
+  .menu-toggle {
+    display: none !important;
+  }
+
+  .header-inner {
+    justify-content: space-between;
+  }
+
+  .site-logo {
+    margin-right: auto;
+  }
+
+}
+
+/* =========================================
+   MOBILE HEADER
+========================================= */
+
+@media screen and (max-width: 767px) {
+
+  .header-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    width: 100%;
+    gap: 0;
+  }
+
+  /* 三本線メニュー */
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    width: 28px;
+    height: 28px;
+    padding: 0;
+
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    justify-self: start;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 21px;
+    height: 1px;
+    background: #111;
+  }
+
+  /* ロゴを中央に配置 */
+  .site-logo {
+    justify-self: center;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  /* アイコン類は右側 */
+  .header-tools {
+    justify-self: end;
+    gap: 12px;
+  }
+
+}
+
+/* =========================================
+   MENU OPEN / CLOSE ANIMATION
+   PC ONLY
+========================================= */
+
+@media screen and (min-width: 768px) {
+
+  /* サブメニュー：通常（閉じた状態） */
+  .menu-group .menu-subnav {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    max-height: 0;
+    overflow: hidden;
+
+    margin: 0 0 0 7px;
+    padding: 0 0 0 17px;
+
+    opacity: 0;
+    transform: translateY(-10px);
+
+    border-left: 1px solid #ddd;
+
+    /* 閉じるときはリンクが消えるのを待ってから収納 */
+    transition:
+      max-height 0.4s ease 0.4s,
+      opacity 0.25s ease 0.4s,
+      transform 0.4s ease 0.4s,
+      margin 0.4s ease 0.4s,
+      padding 0.4s ease 0.4s;
+  }
+
+  /* 展開時 */
+  .menu-group.is-open .menu-subnav {
+    max-height: 500px;
+
+    margin: 16px 0 5px 7px;
+    padding: 2px 0 2px 17px;
+
+    opacity: 1;
+    transform: translateY(0);
+
+    transition-delay: 0s;
+  }
+
+
+  /* リンクの基本アニメーション */
+  .menu-group .menu-sub-link {
+    opacity: 0;
+    transform: translateY(-6px);
+
+    transition:
+      opacity 0.25s ease,
+      transform 0.3s ease;
+  }
+
+  /* 展開時：上から順番に表示 */
+  .menu-group.is-open .menu-sub-link:nth-child(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.05s;
+  }
+
+  .menu-group.is-open .menu-sub-link:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+  }
+
+  .menu-group.is-open .menu-sub-link:nth-child(3) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.15s;
+  }
+
+  .menu-group.is-open .menu-sub-link:nth-child(4) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+  }
+
+  .menu-group.is-open .menu-sub-link:nth-child(5) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.25s;
+  }
+
+  .menu-group.is-open .menu-sub-link:nth-child(6) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+  }
+
+
+  /* 収納時：下から順番に消える */
+  .menu-group:not(.is-open) .menu-sub-link:nth-last-child(1) {
+    transition-delay: 0s;
+  }
+
+  .menu-group:not(.is-open) .menu-sub-link:nth-last-child(2) {
+    transition-delay: 0.08s;
+  }
+
+  .menu-group:not(.is-open) .menu-sub-link:nth-last-child(3) {
+    transition-delay: 0.16s;
+  }
+
+  .menu-group:not(.is-open) .menu-sub-link:nth-last-child(4) {
+    transition-delay: 0.24s;
+  }
+
+  .menu-group:not(.is-open) .menu-sub-link:nth-last-child(5) {
+    transition-delay: 0.32s;
+  }
+
+  .menu-group:not(.is-open) .menu-sub-link:nth-last-child(6) {
+    transition-delay: 0.4s;
   }
 
 }
