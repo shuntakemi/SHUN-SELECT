@@ -18,7 +18,14 @@
     <!-- HEADER -->
     <header class="header">
       <div class="header-inner">
-
+        <button class="menu-toggle" type="button"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+        aria-controls="mobile-menu">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
         <h1 class="site-logo">
           <a href="#">SELECT SHOP</a>
         </h1>
@@ -48,6 +55,11 @@
         </div>
 
       </div>
+      <nav class="mobile-menu" id="mobile-menu"
+     aria-label="メインメニュー" hidden>
+  <a href="#categories">MEN</a>
+  <a href="#categories">WOMEN</a>
+</nav>
     </header>
 
 
@@ -122,64 +134,107 @@
     <!-- MAIN PAGE LAYOUT -->
     <div class="page-layout">
 
-      <!-- INDEX：重複ヘッダーは置かない -->
-      <aside class="sidebar">
-        <div class="index">
-<!-- INDEX HEADER -->
-<div class="index-header">
+     
+<!-- SIDEBAR -->
+<aside class="sidebar">
 
-  <h2 class="index-logo">
-    <a href="#">SELECT SHOP</a>
-  </h2>
+  <!-- 固定部分：ロゴ・アイコン -->
+  <div class="sidebar-header">
 
-  <div class="header-tools">
+    <h2 class="index-logo">
+      <a href="#">SELECT SHOP</a>
+    </h2>
 
-    <a href="#" aria-label="Search">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <circle cx="10.8" cy="10.8" r="6.8"/>
-        <path d="m16 16 5 5"/>
-      </svg>
-    </a>
+    <div class="header-tools">
+      <a href="#" aria-label="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="10.8" cy="10.8" r="6.8"/>
+          <path d="m16 16 5 5"/>
+        </svg>
+      </a>
 
-    <a href="#" aria-label="Login">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <circle cx="12" cy="7.5" r="3.5"/>
-        <path d="M4.5 21c.5-4.2 3.4-6.5 7.5-6.5s7 2.3 7.5 6.5"/>
-      </svg>
-    </a>
+      <a href="#" aria-label="Login">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="7.5" r="3.5"/>
+          <path d="M4.5 21c.5-4.2 3.4-6.5 7.5-6.5s7 2.3 7.5 6.5"/>
+        </svg>
+      </a>
 
-    <a href="#" aria-label="Cart">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M2.5 3h2.8l2.2 12.2h11.8l2-9H6"/>
-        <circle cx="9" cy="19.5" r="1.2"/>
-        <circle cx="18" cy="19.5" r="1.2"/>
-      </svg>
-    </a>
+      <a href="#" aria-label="Cart">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M2.5 3h2.8l2.2 12.2h11.8l2-9H6"/>
+          <circle cx="9" cy="19.5" r="1.2"/>
+          <circle cx="18" cy="19.5" r="1.2"/>
+        </svg>
+      </a>
+    </div>
 
   </div>
-</div>
-          <p class="index-title">INDEX</p>
 
-          <nav class="index-nav">
-            <a href="#new-arrivals" class="index-link active">
-              NEW ARRIVALS
-            </a>
+  <!-- スクロール部分：INDEX・MENU -->
+  <div class="sidebar-scroll">
 
-            <a href="#brands" class="index-link">
-              FEATURED BRANDS
-            </a>
+    <p class="index-title">INDEX</p>
 
-            <a href="#styling" class="index-link">
-              STYLING
-            </a>
+    <nav class="index-nav">
+      <a href="#new-arrivals" class="index-link active">NEW ARRIVALS</a>
+      <a href="#brands" class="index-link">FEATURED BRANDS</a>
+      <a href="#styling" class="index-link">STYLING</a>
+      <a href="#categories" class="index-link">ITEM CATEGORY</a>
+    </nav>
 
-            <a href="#categories" class="index-link">
-              ITEM CATEGORY
-            </a>
-          </nav>
+    <p class="index-title menu-title">MENU</p>
 
+    <nav class="menu-nav">
+
+      <a href="MAN.html" class="menu-row">
+        <span class="menu-dot"></span>
+        <span class="menu-label">MAN</span>
+      </a>
+
+      <a href="WOMAN.html" class="menu-row">
+        <span class="menu-dot"></span>
+        <span class="menu-label">WOMAN</span>
+      </a>
+
+      <!-- BRAND -->
+      <div class="menu-group">
+        <button class="menu-row menu-expand" type="button" aria-expanded="false">
+          <span class="menu-dot"></span>
+          <span class="menu-label">BRAND</span>
+          <span class="menu-arrow"></span>
+        </button>
+
+        <div class="menu-subnav">
+          <a href="#" class="menu-sub-link">BRAND A</a>
+          <a href="#" class="menu-sub-link">BRAND B</a>
+          <a href="#" class="menu-sub-link">BRAND C</a>
         </div>
-      </aside>
+      </div>
+
+      <!-- CATEGORY -->
+      <div class="menu-group">
+        <button class="menu-row menu-expand" type="button" aria-expanded="false">
+          <span class="menu-dot"></span>
+          <span class="menu-label">CATEGORY</span>
+          <span class="menu-arrow"></span>
+        </button>
+
+        <div class="menu-subnav">
+          <a href="#" class="menu-sub-link">WEAR</a>
+          <a href="#" class="menu-sub-link">BAGS &amp; WALLETS</a>
+          <a href="#" class="menu-sub-link">SHOES</a>
+          <a href="#" class="menu-sub-link">ACCESSORIES</a>
+          <a href="#" class="menu-sub-link">FASHION GOODS</a>
+          <a href="#" class="menu-sub-link">LIFESTYLE</a>
+        </div>
+      </div>
+
+    </nav>
+
+  </div>
+
+</aside>
 
 
       <!-- RIGHT CONTENT -->

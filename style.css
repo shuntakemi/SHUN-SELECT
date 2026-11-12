@@ -238,15 +238,19 @@ button {
   padding: 100px 4%;
 }
 
-.sidebar {
-  position: relative;
-  min-width: 0;
+
+/* Chrome・Edge用スクロールバー */
+.index::-webkit-scrollbar {
+  width: 4px;
 }
 
-.index {
-  position: sticky;
-  top: 50px;
-  padding-right: 35px;
+.index::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.index::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .index-title {
@@ -801,10 +805,6 @@ button {
     padding: 75px 3%;
   }
 
-  .index {
-    padding-right: 20px;
-  }
-
   .product-grid,
   .styling-grid {
     gap: 10px;
@@ -1014,27 +1014,357 @@ button {
 
 
 /* =========================================
-   17. MOBILE HEADER + INDEX
-   MOBILE ONLY
+   SIDEBAR / INDEX / MENU
+   PC・TABLET・MOBILE 共通整理版
+========================================= */
+
+
+/* -----------------------------------------
+   01. PAGE LAYOUT
+----------------------------------------- */
+
+.page-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+  gap: 0;
+  width: 100%;
+  padding: 100px 4%;
+  align-items: start;
+}
+
+.sidebar {
+  position: sticky;
+  top: 40px;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+
+/* -----------------------------------------
+   02. SIDEBAR HEADER
+   ロゴ・アイコンは固定
+----------------------------------------- */
+
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  flex: 0 0 auto;
+  margin-bottom: 35px;
+}
+
+.index-logo {
+  flex-shrink: 0;
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+
+.sidebar-header .header-tools {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sidebar-header .header-tools a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+}
+
+.sidebar-header .header-tools svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* -----------------------------------------
+   03. SIDEBAR SCROLL
+   INDEX・MENUだけスクロール
+----------------------------------------- */
+
+.sidebar-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+    width: calc(100% - 50px);
+  overflow-y: auto;
+  box-sizing: content-box;
+}
+
+.sidebar-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+/* -----------------------------------------
+   04. INDEX TITLE
+----------------------------------------- */
+
+.index-title {
+  margin-bottom: 35px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+
+/* -----------------------------------------
+   05. INDEX NAVIGATION
+----------------------------------------- */
+
+.index-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+}
+
+.index-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  color: #999;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  transition: color 0.2s ease;
+}
+
+/* INDEXの丸印 */
+.index-link::before {
+  content: "";
+  display: block;
+  flex: 0 0 5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.index-link:hover {
+  color: #111;
+}
+
+.index-link:hover::before {
+  background: #999;
+}
+
+.index-link.active {
+  color: #111;
+}
+
+.index-link.active::before {
+  background: #111;
+}
+
+
+/* -----------------------------------------
+   06. MENU TITLE
+----------------------------------------- */
+
+.menu-title {
+  margin-top: 55px;
+  margin-bottom: 35px;
+}
+
+
+/* -----------------------------------------
+   07. MENU NAVIGATION
+----------------------------------------- */
+
+.menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* 親メニュー */
+.menu-row {
+  display: grid;
+  grid-template-columns: 5px minmax(0, 1fr) 100px;
+  align-items: center;
+  column-gap: 10px;
+
+  width: 100%;
+  min-height: 16px;
+  padding: 0;
+  margin: 0;
+
+  border: none;
+  background: transparent;
+
+  color: #111;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  text-align: left;
+  text-decoration: none;
+
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+/* MENUの丸印 */
+.menu-dot {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+/* MENUの文字 */
+.menu-label {
+  display: block;
+}
+
+/* ホバー */
+.menu-row:hover {
+  color: #111;
+  transform: translateX(4px);
+}
+
+.menu-row:hover .menu-dot {
+  background: #999;
+}
+
+/* 開閉矢印 */
+.menu-arrow {
+  width: 6px;
+  height: 6px;
+  justify-self: center;
+
+  border-right: 1px solid #111;
+  border-bottom: 1px solid #111;
+
+  transform: rotate(45deg);
+  transition: transform 0.25s ease;
+}
+
+/* 開いたとき */
+.menu-expand[aria-expanded="true"] .menu-arrow {
+  transform: rotate(225deg);
+}
+
+
+/* -----------------------------------------
+   08. MENU CHILDREN
+----------------------------------------- */
+
+.menu-subnav {
+  display: none;
+  flex-direction: column;
+  gap: 14px;
+
+  margin: 16px 0 5px 7px;
+  padding: 2px 0 2px 17px;
+
+  border-left: 1px solid #ddd;
+}
+
+.menu-group.is-open .menu-subnav {
+  display: flex;
+}
+
+.menu-sub-link {
+  display: block;
+  position: relative;
+
+  color: #111;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  text-decoration: none;
+
+  transition: transform 0.25s ease;
+}
+
+.menu-sub-link:hover {
+  color: #111;
+  transform: translateX(4px);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+
+  .page-layout {
+    padding: 75px 3%;
+  }
+
+  .sidebar {
+    top: 30px;
+    height: calc(100vh - 60px);
+  }
+
+  .sidebar-header {
+    gap: 18px;
+  }
+
+  .sidebar-scroll {
+    padding-right: 20px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
 ========================================= */
 
 @media screen and (max-width: 767px) {
 
-  /* -----------------------------------------
-     MAIN HEADER
-  ----------------------------------------- */
+  /* メインヘッダー固定 */
 
   .header {
-    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 1001;
+
     display: flex;
     align-items: center;
+
     width: 100%;
     height: 64px;
     min-height: 64px;
     padding: 0 5%;
+
     background: #fff;
     transition: transform 0.25s ease;
   }
@@ -1064,9 +1394,7 @@ button {
   }
 
 
-  /* -----------------------------------------
-     MAIN VISUAL
-  ----------------------------------------- */
+  /* メインビジュアル */
 
   .brand-slideshow {
     height: calc(100svh - 64px);
@@ -1074,14 +1402,8 @@ button {
     max-height: none;
   }
 
-  .main-visual {
-    margin: 0;
-  }
 
-
-  /* -----------------------------------------
-     PAGE LAYOUT
-  ----------------------------------------- */
+  /* ページレイアウト */
 
   .page-layout {
     display: block;
@@ -1089,58 +1411,60 @@ button {
   }
 
 
-  /* -----------------------------------------
-     INDEX
-  ----------------------------------------- */
+  /* スマホ用 INDEX */
 
   .sidebar {
-    position: -webkit-sticky;
     position: sticky;
     top: 64px;
     z-index: 1000;
+
     display: block;
     width: calc(100% + 10%);
+    height: auto;
     margin: 0 -5% 35px;
     padding: 0 5%;
+
+    overflow: visible;
     background: rgba(255, 255, 255, 0.98);
     border-bottom: 1px solid #eee;
+
     transition: top 0.25s ease;
   }
 
-  .index {
-    position: static;
-    padding: 0;
+  /* ロゴ・アイコンはスマホでは表示しない */
+  .sidebar-header {
+    display: none;
   }
 
-  /* INDEXの重複ヘッダーは非表示 */
-  .sidebar .index-header,
-  .index-header {
-    display: none !important;
+  /* スマホではスクロールさせない */
+  .sidebar-scroll {
+    overflow: visible;
+    padding: 0;
   }
 
   .index-title {
     display: none;
   }
 
+  /* MENUはスマホでは非表示 */
+  .menu-title,
+  .menu-nav {
+    display: none;
+  }
 
-  /* -----------------------------------------
-     HEADER HIDE / SHOW
-  ----------------------------------------- */
 
-  /* 下スクロール時にヘッダーを隠す */
+  /* ヘッダーを隠す動作 */
+
   .header.is-hidden {
     transform: translateY(-100%);
   }
 
-  /* ヘッダーが隠れたらINDEXを最上部へ */
   .sidebar.is-header-hidden {
     top: 0;
   }
 
 
-  /* -----------------------------------------
-     INDEX NAVIGATION
-  ----------------------------------------- */
+  /* INDEXの横並び */
 
   .index-nav {
     display: grid;
@@ -1156,9 +1480,11 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+
     width: 100%;
     min-width: 0;
     padding: 0 1px 5px;
+
     color: #aaa;
     font-size: 7px;
     font-weight: 500;
@@ -1175,8 +1501,10 @@ button {
     position: absolute;
     left: 20%;
     bottom: 0;
+
     width: 60%;
     height: 1px;
+
     background: #111;
     transform: scaleX(0);
     transition: transform 0.2s ease;
@@ -1188,69 +1516,6 @@ button {
 
   .index-link.active::after {
     transform: scaleX(1);
-  }
-
-}
-
-
-/* =========================================
-   PC INDEX HEADER
-========================================= */
-
-@media screen and (min-width: 768px) {
-
-  .index-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    width: 100%;
-    margin-bottom: 55px;
-  }
-
-  .index-logo {
-    flex-shrink: 0;
-    font-size: 17px;
-    font-weight: 650;
-    letter-spacing: -0.04em;
-    white-space: nowrap;
-  }
-
-  .index-header .header-tools {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .index-header .header-tools a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #111;
-  }
-
-  .index-header .header-tools svg {
-    display: block;
-    width: 16px;
-    height: 16px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.4;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-}
-
-
-/* =========================================
-   MOBILE: HIDE INDEX HEADER
-========================================= */
-
-@media screen and (max-width: 767px) {
-
-  .sidebar .index-header {
-    display: none !important;
   }
 
 }

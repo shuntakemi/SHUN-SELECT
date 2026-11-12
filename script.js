@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
-
+  
   /* =========================================
      01. BRAND SLIDESHOW
   ========================================= */
@@ -303,6 +303,28 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("pointerleave", () => {
     categoryCursor.classList.remove("is-visible");
     currentCategory = null;
+  });
+
+});
+
+/* =========================================
+   MENU ACCORDION
+========================================= */
+
+document.querySelectorAll(".menu-expand").forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    const group = button.closest(".menu-group");
+    const isOpen = group.classList.contains("is-open");
+
+    group.classList.toggle("is-open", !isOpen);
+
+    button.setAttribute(
+      "aria-expanded",
+      String(!isOpen)
+    );
+
   });
 
 });
