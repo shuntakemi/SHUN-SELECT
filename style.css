@@ -1,6 +1,7 @@
-
 /* =========================================
+
    00. RESET & BASIC
+
 ========================================= */
 
 * {
@@ -57,9 +58,10 @@ button {
   border-radius: 0 0 25px 25px;
 }
 
-
 /* =========================================
+
    01. HEADER
+
 ========================================= */
 
 .header {
@@ -83,6 +85,7 @@ button {
 }
 
 .header-nav a,
+
 .header-tools a {
   font-size: 10px;
   font-weight: 500;
@@ -118,9 +121,10 @@ button {
   opacity: 0.5;
 }
 
-
 /* =========================================
+
    02. MAIN VISUAL / SLIDESHOW
+
 ========================================= */
 
 .main-visual {
@@ -225,21 +229,8 @@ button {
   padding: 0 5px;
 }
 
-
-/* =========================================
-   03. PAGE LAYOUT
-========================================= */
-
-.page-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
-  gap: 0;
-  width: 100%;
-  padding: 100px 4%;
-}
-
-
 /* Chrome・Edge用スクロールバー */
+
 .index::-webkit-scrollbar {
   width: 4px;
 }
@@ -253,61 +244,10 @@ button {
   background: transparent;
 }
 
-.index-title {
-  margin-bottom: 35px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-}
-
-.index-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-
-.index-link {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: fit-content;
-  color: #999;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  transition: color 0.2s ease;
-}
-
-.index-link::before {
-  content: "";
-  width: 5px;
-  height: 5px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: transparent;
-  transition: background 0.2s ease;
-}
-
-.index-link:hover {
-  color: #111;
-}
-
-.index-link:hover::before {
-  background: #999;
-}
-
-.index-link.active {
-  color: #111;
-}
-
-.index-link.active::before {
-  background: #111;
-}
-
-
 /* =========================================
+
    04. MAIN CONTENT
+
 ========================================= */
 
 .main-content {
@@ -353,9 +293,10 @@ button {
   color: #111;
 }
 
-
 /* =========================================
+
    05. PRODUCT GRID
+
 ========================================= */
 
 .product-grid {
@@ -386,6 +327,7 @@ button {
 }
 
 .product-item h3,
+
 .product-item h4 {
   margin-top: 4px;
   font-size: 11px;
@@ -403,9 +345,10 @@ button {
   opacity: 0.7;
 }
 
-
 /* =========================================
+
    06. FEATURED BRANDS
+
 ========================================= */
 
 .brand-products {
@@ -452,9 +395,10 @@ button {
   color: #111;
 }
 
-
 /* =========================================
+
    07. STYLING
+
 ========================================= */
 
 .styling-grid {
@@ -484,9 +428,10 @@ button {
   opacity: 0.7;
 }
 
-
 /* =========================================
+
    08. ITEM CATEGORY
+
 ========================================= */
 
 .category-section {
@@ -526,7 +471,6 @@ button {
   font-weight: 300;
 }
 
-
 /* CATEGORY CUSTOM CURSOR */
 
 .category-cursor {
@@ -565,9 +509,10 @@ button {
   }
 }
 
-
 /* =========================================
+
    09. TOPICS
+
 ========================================= */
 
 .topics-list {
@@ -606,9 +551,10 @@ button {
   opacity: 0.55;
 }
 
-
 /* =========================================
+
    10. BRAND LIST
+
 ========================================= */
 
 .brand-list {
@@ -642,9 +588,10 @@ button {
   opacity: 0.55;
 }
 
-
 /* =========================================
+
    11. SHOP CARD
+
 ========================================= */
 
 .shop-card-section {
@@ -692,9 +639,10 @@ button {
   letter-spacing: 0.1em;
 }
 
-
 /* =========================================
+
    12. FOOTER
+
 ========================================= */
 
 .footer {
@@ -730,6 +678,7 @@ button {
 }
 
 .footer-info-item p,
+
 .footer-info-item a {
   color: #ddd;
   font-size: 10px;
@@ -768,6 +717,7 @@ button {
 }
 
 .footer-bottom p,
+
 .footer-bottom a {
   color: #999;
   font-size: 9px;
@@ -779,9 +729,10 @@ button {
   gap: 20px;
 }
 
-
 /* =========================================
+
    13. SECTION FOOTER
+
 ========================================= */
 
 .section-footer {
@@ -790,218 +741,156 @@ button {
   margin-top: 28px;
 }
 
-
 /* =========================================
+
    14. TABLET
+
 ========================================= */
 
 @media (max-width: 1024px) {
-
   .header-tools {
     gap: 12px;
   }
-
   .page-layout {
     padding: 75px 3%;
   }
-
   .product-grid,
   .styling-grid {
     gap: 10px;
   }
-
   .brand-list {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     column-gap: 16px;
     row-gap: 24px;
   }
-
   .shop-card-section {
     padding: 75px 4%;
   }
-
 }
 
-
 /* =========================================
+
    15. MOBILE
+
 ========================================= */
 
 @media (max-width: 767px) {
-
   /* HEADER */
-
   .header {
     padding: 18px 5%;
   }
-
-  .header-inner {
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-
-  .site-logo {
-    font-size: 18px;
-  }
-
-  .header-tools {
-    gap: 12px;
-  }
-
   .header-tools a {
     font-size: 9px;
   }
-
-
   /* MAIN VISUAL */
-
   .brand-slideshow {
     height: 65vh;
     min-height: 350px;
   }
-
   .slide-caption {
     left: 5%;
     bottom: 12%;
   }
-
-
   /* PAGE LAYOUT */
-
   .page-layout {
     display: block;
     padding: 45px 5%;
   }
-
-
   /* CONTENT */
-
   .content-section {
     margin-bottom: 85px;
   }
-
   .section-heading h2 {
     font-size: 19px;
   }
-
   .product-grid,
   .styling-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 25px 12px;
   }
-
-
   /* CATEGORY */
-
   .category-section {
     padding: 60px 0;
   }
-
   .category-list {
     gap: 16px;
   }
-
   .category-row {
     gap: 8px 12px;
   }
-
   .category-item {
     font-size: 17px;
   }
-
   .category-slash {
     font-size: 16px;
   }
-
   .category-cursor {
     display: none;
   }
-
-
   /* TOPICS */
-
   .topics-item a {
     grid-template-columns: 85px 55px 1fr;
     gap: 8px;
     padding: 18px 3px;
   }
-
   .topics-item h3 {
     font-size: 10px;
   }
-
-
   /* BRAND LIST */
-
   .brand-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 10px;
     row-gap: 14px;
   }
-
   .brand-list a {
     min-height: 64px;
     padding: 12px 4px;
     font-size: 13px;
   }
-
-
   /* SHOP CARD */
-
   .shop-card-section {
     padding: 60px 5%;
   }
-
   .shop-card-inner {
     flex-direction: column;
     align-items: flex-start;
     gap: 30px;
   }
-
   .shop-card-brand h2 {
     font-size: 32px;
   }
-
-
   /* FOOTER */
-
   .footer {
     padding: 45px 5% 20px;
   }
-
   .footer-information {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 35px 20px;
   }
-
   .footer-big-logo {
     margin-top: 50px;
   }
-
   .footer-big-logo a {
     font-size: 16vw;
   }
-
   .footer-bottom {
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
   }
-
   .footer-bottom-links {
     flex-wrap: wrap;
     gap: 15px;
   }
-
 }
 
-
 /* =========================================
+
    16. REDUCED MOTION
+
 ========================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
@@ -1009,19 +898,21 @@ button {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
   }
-
 }
 
-
 /* =========================================
+
    SIDEBAR / INDEX / MENU
+
    PC・TABLET・MOBILE 共通整理版
+
 ========================================= */
 
-
 /* -----------------------------------------
+
    01. PAGE LAYOUT
------------------------------------------ */
+
+\----------------------------------------- */
 
 .page-layout {
   display: grid;
@@ -1043,11 +934,13 @@ button {
   overflow: hidden;
 }
 
-
 /* -----------------------------------------
+
    02. SIDEBAR HEADER
+
    ロゴ・アイコンは固定
------------------------------------------ */
+
+\----------------------------------------- */
 
 .sidebar-header {
   display: flex;
@@ -1090,11 +983,13 @@ button {
   stroke-linejoin: round;
 }
 
-
 /* -----------------------------------------
+
    03. SIDEBAR SCROLL
+
    INDEX・MENUだけスクロール
------------------------------------------ */
+
+\----------------------------------------- */
 
 .sidebar-scroll {
   flex: 1 1 auto;
@@ -1102,7 +997,6 @@ button {
   overflow-y: auto;
   overflow-x: hidden;
   overscroll-behavior: contain;
-
   scrollbar-width: thin;
   scrollbar-color: #ccc transparent;
     width: calc(100% - 50px);
@@ -1123,10 +1017,11 @@ button {
   background: transparent;
 }
 
-
 /* -----------------------------------------
+
    04. INDEX TITLE
------------------------------------------ */
+
+\----------------------------------------- */
 
 .index-title {
   margin-bottom: 35px;
@@ -1135,10 +1030,11 @@ button {
   letter-spacing: 0.15em;
 }
 
-
 /* -----------------------------------------
+
    05. INDEX NAVIGATION
------------------------------------------ */
+
+\----------------------------------------- */
 
 .index-nav {
   display: flex;
@@ -1161,6 +1057,7 @@ button {
 }
 
 /* INDEXの丸印 */
+
 .index-link::before {
   content: "";
   display: block;
@@ -1188,20 +1085,22 @@ button {
   background: #111;
 }
 
-
 /* -----------------------------------------
+
    06. MENU TITLE
------------------------------------------ */
+
+\----------------------------------------- */
 
 .menu-title {
   margin-top: 55px;
   margin-bottom: 35px;
 }
 
-
 /* -----------------------------------------
+
    07. MENU NAVIGATION
------------------------------------------ */
+
+\----------------------------------------- */
 
 .menu-nav {
   display: flex;
@@ -1210,20 +1109,18 @@ button {
 }
 
 /* 親メニュー */
+
 .menu-row {
   display: grid;
   grid-template-columns: 5px minmax(0, 1fr) 100px;
   align-items: center;
   column-gap: 10px;
-
   width: 100%;
   min-height: 16px;
   padding: 0;
   margin: 0;
-
   border: none;
   background: transparent;
-
   color: #111;
   font-family: inherit;
   font-size: 10px;
@@ -1232,12 +1129,12 @@ button {
   line-height: 1.6;
   text-align: left;
   text-decoration: none;
-
   cursor: pointer;
   transition: transform 0.25s ease;
 }
 
 /* MENUの丸印 */
+
 .menu-dot {
   display: block;
   width: 5px;
@@ -1247,11 +1144,13 @@ button {
 }
 
 /* MENUの文字 */
+
 .menu-label {
   display: block;
 }
 
 /* ホバー */
+
 .menu-row:hover {
   color: #111;
   transform: translateX(4px);
@@ -1262,156 +1161,68 @@ button {
 }
 
 /* 開閉矢印 */
+
 .menu-arrow {
   width: 6px;
   height: 6px;
   justify-self: center;
-
   border-right: 1px solid #111;
   border-bottom: 1px solid #111;
-
   transform: rotate(45deg);
   transition: transform 0.25s ease;
 }
 
 /* 開いたとき */
+
 .menu-expand[aria-expanded="true"] .menu-arrow {
   transform: rotate(225deg);
 }
 
-
 /* -----------------------------------------
+
    08. MENU CHILDREN
------------------------------------------ */
 
-/* =========================================
-   MENU CHILDREN ANIMATION
-   PC ONLY
-========================================= */
-
-@media screen and (min-width: 768px) {
-
-  .menu-subnav {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-
-    max-height: 0;
-    overflow: hidden;
-
-    margin: 0 0 0 7px;
-    padding: 0 0 0 17px;
-
-    border-left: 1px solid #ddd;
-
-    opacity: 0;
-    transform: translateY(-10px);
-
-    transition:
-      max-height 0.4s ease,
-      opacity 0.3s ease,
-      transform 0.4s ease,
-      margin 0.4s ease,
-      padding 0.4s ease;
-  }
-
-  /* 展開時 */
-  .menu-group.is-open .menu-subnav {
-    max-height: 500px;
-
-    margin: 16px 0 5px 7px;
-    padding: 2px 0 2px 17px;
-
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* リンクが上から順番に現れる */
-  .menu-sub-link {
-    opacity: 0;
-    transform: translateY(-6px);
-
-    transition:
-      opacity 0.3s ease,
-      transform 0.3s ease;
-  }
-
-  .menu-group.is-open .menu-sub-link {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .menu-group.is-open .menu-sub-link:nth-child(1) {
-    transition-delay: 0.05s;
-  }
-
-  .menu-group.is-open .menu-sub-link:nth-child(2) {
-    transition-delay: 0.1s;
-  }
-
-  .menu-group.is-open .menu-sub-link:nth-child(3) {
-    transition-delay: 0.15s;
-  }
-
-  .menu-group.is-open .menu-sub-link:nth-child(4) {
-    transition-delay: 0.2s;
-  }
-
-  .menu-group.is-open .menu-sub-link:nth-child(5) {
-    transition-delay: 0.25s;
-  }
-
-  .menu-group.is-open .menu-sub-link:nth-child(6) {
-    transition-delay: 0.3s;
-  }
-
-}
+\----------------------------------------- */
 
 .menu-sub-link {
   display: block;
   position: relative;
-
   color: #111;
   font-size: 9px;
   letter-spacing: 0.08em;
   line-height: 1.6;
   text-decoration: none;
-
   transition: transform 0.25s ease;
 }
 
 /* =========================================
+
    CLOSE ANIMATION
+
    下から順番に消える
+
 ========================================= */
 
 @media screen and (min-width: 768px) {
-
   /* 閉じるとき：下の項目から順番に */
   .menu-group:not(.is-open) .menu-sub-link:nth-child(1) {
     transition-delay: 0.30s;
   }
-
   .menu-group:not(.is-open) .menu-sub-link:nth-child(2) {
     transition-delay: 0.25s;
   }
-
   .menu-group:not(.is-open) .menu-sub-link:nth-child(3) {
     transition-delay: 0.20s;
   }
-
   .menu-group:not(.is-open) .menu-sub-link:nth-child(4) {
     transition-delay: 0.15s;
   }
-
   .menu-group:not(.is-open) .menu-sub-link:nth-child(5) {
     transition-delay: 0.10s;
   }
-
   .menu-group:not(.is-open) .menu-sub-link:nth-child(6) {
     transition-delay: 0.05s;
   }
-
 }
 
 .menu-sub-link:hover {
@@ -1419,155 +1230,104 @@ button {
   transform: translateX(4px);
 }
 
-
 /* =========================================
+
    TABLET
+
 ========================================= */
 
 @media screen and (max-width: 1024px) and (min-width: 768px) {
-
   .page-layout {
     padding: 75px 3%;
   }
-
   .sidebar {
     top: 30px;
     height: calc(100vh - 60px);
   }
-
   .sidebar-header {
     gap: 18px;
   }
-
   .sidebar-scroll {
     padding-right: 20px;
   }
-
 }
 
-
 /* =========================================
+
    MOBILE
+
 ========================================= */
 
 @media screen and (max-width: 767px) {
-
   /* メインヘッダー固定 */
-
   .header {
     position: sticky;
     top: 0;
     z-index: 1001;
-
     display: flex;
     align-items: center;
-
     width: 100%;
     height: 64px;
     min-height: 64px;
     padding: 0 5%;
-
     background: #fff;
     transition: transform 0.25s ease;
   }
-
-  .header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    width: 100%;
-    gap: 15px;
-  }
-
-  .site-logo {
-    font-size: 18px;
-  }
-
-  .header-tools {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
   .header-tools svg {
     width: 19px;
     height: 19px;
   }
-
-
   /* メインビジュアル */
-
   .brand-slideshow {
     height: calc(100svh - 64px);
     min-height: 0;
     max-height: none;
   }
-
-
   /* ページレイアウト */
-
   .page-layout {
     display: block;
     padding: 0 5% 45px;
   }
-
-
   /* スマホ用 INDEX */
-
   .sidebar {
     position: sticky;
     top: 64px;
     z-index: 1000;
-
     display: block;
     width: calc(100% + 10%);
     height: auto;
     margin: 0 -5% 35px;
     padding: 0 5%;
-
     overflow: visible;
     background: rgba(255, 255, 255, 0.98);
     border-bottom: 1px solid #eee;
-
     transition: top 0.25s ease;
   }
-
   /* ロゴ・アイコンはスマホでは表示しない */
   .sidebar-header {
     display: none;
   }
-
   /* スマホではスクロールさせない */
   .sidebar-scroll {
     overflow: visible;
     padding: 0;
   }
-
   .index-title {
     display: none;
   }
-
   /* MENUはスマホでは非表示 */
   .menu-title,
   .menu-nav {
     display: none;
   }
-
-
   /* ヘッダーを隠す動作 */
-
   .header.is-hidden {
     transform: translateY(-100%);
   }
-
   .sidebar.is-header-hidden {
     top: 0;
   }
-
-
   /* INDEXの横並び */
-
   .index-nav {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1576,79 +1336,69 @@ button {
     padding: 12px 0;
     overflow: hidden;
   }
-
   .index-link {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-
     width: 100%;
     min-width: 0;
     padding: 0 1px 5px;
-
     color: #aaa;
     font-size: 7px;
     font-weight: 500;
     letter-spacing: 0;
     white-space: nowrap;
   }
-
   .index-link::before {
     display: none;
   }
-
   .index-link::after {
     content: "";
     position: absolute;
     left: 20%;
     bottom: 0;
-
     width: 60%;
     height: 1px;
-
     background: #111;
     transform: scaleX(0);
     transition: transform 0.2s ease;
   }
-
   .index-link.active {
     color: #111;
   }
-
   .index-link.active::after {
     transform: scaleX(1);
   }
-
 }
 
 /* =========================================
+
    HEADER LOGO POSITION
+
 ========================================= */
 
 /* PC版 */
-@media screen and (min-width: 768px) {
 
+@media screen and (min-width: 768px) {
   .menu-toggle {
     display: none !important;
   }
-
   .header-inner {
     justify-content: space-between;
   }
-
   .site-logo {
     margin-right: auto;
   }
-
 }
 
 /* =========================================
+
    MOBILE HEADER
+
 ========================================= */
 
 @media screen and (max-width: 767px) {
-
   .header-inner {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -1656,7 +1406,6 @@ button {
     width: 100%;
     gap: 0;
   }
-
   /* 三本線メニュー */
   .menu-toggle {
     display: flex;
@@ -1664,64 +1413,57 @@ button {
     justify-content: center;
     align-items: center;
     gap: 5px;
-
     width: 28px;
     height: 28px;
     padding: 0;
-
     border: none;
     background: transparent;
     cursor: pointer;
-
     justify-self: start;
   }
-
   .menu-toggle span {
     display: block;
     width: 21px;
     height: 1px;
     background: #111;
   }
-
   /* ロゴを中央に配置 */
   .site-logo {
+    font-size: 18px;
     justify-self: center;
     margin: 0;
     white-space: nowrap;
   }
-
   /* アイコン類は右側 */
   .header-tools {
+    display: flex;
+    align-items: center;
     justify-self: end;
     gap: 12px;
   }
-
 }
 
 /* =========================================
+
    MENU OPEN / CLOSE ANIMATION
+
    PC ONLY
+
 ========================================= */
 
 @media screen and (min-width: 768px) {
-
   /* サブメニュー：通常（閉じた状態） */
   .menu-group .menu-subnav {
     display: flex;
     flex-direction: column;
     gap: 14px;
-
     max-height: 0;
     overflow: hidden;
-
     margin: 0 0 0 7px;
     padding: 0 0 0 17px;
-
     opacity: 0;
     transform: translateY(-10px);
-
     border-left: 1px solid #ddd;
-
     /* 閉じるときはリンクが消えるのを待ってから収納 */
     transition:
       max-height 0.4s ease 0.4s,
@@ -1730,92 +1472,134 @@ button {
       margin 0.4s ease 0.4s,
       padding 0.4s ease 0.4s;
   }
-
   /* 展開時 */
   .menu-group.is-open .menu-subnav {
     max-height: 500px;
-
     margin: 16px 0 5px 7px;
     padding: 2px 0 2px 17px;
-
     opacity: 1;
     transform: translateY(0);
-
     transition-delay: 0s;
   }
-
-
   /* リンクの基本アニメーション */
   .menu-group .menu-sub-link {
     opacity: 0;
     transform: translateY(-6px);
-
     transition:
       opacity 0.25s ease,
       transform 0.3s ease;
   }
-
   /* 展開時：上から順番に表示 */
   .menu-group.is-open .menu-sub-link:nth-child(1) {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 0.05s;
   }
-
   .menu-group.is-open .menu-sub-link:nth-child(2) {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 0.1s;
   }
-
   .menu-group.is-open .menu-sub-link:nth-child(3) {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 0.15s;
   }
-
   .menu-group.is-open .menu-sub-link:nth-child(4) {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 0.2s;
   }
-
   .menu-group.is-open .menu-sub-link:nth-child(5) {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 0.25s;
   }
-
   .menu-group.is-open .menu-sub-link:nth-child(6) {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 0.3s;
   }
-
-
   /* 収納時：下から順番に消える */
   .menu-group:not(.is-open) .menu-sub-link:nth-last-child(1) {
     transition-delay: 0s;
   }
-
   .menu-group:not(.is-open) .menu-sub-link:nth-last-child(2) {
     transition-delay: 0.08s;
   }
-
   .menu-group:not(.is-open) .menu-sub-link:nth-last-child(3) {
     transition-delay: 0.16s;
   }
-
   .menu-group:not(.is-open) .menu-sub-link:nth-last-child(4) {
     transition-delay: 0.24s;
   }
-
   .menu-group:not(.is-open) .menu-sub-link:nth-last-child(5) {
     transition-delay: 0.32s;
   }
-
   .menu-group:not(.is-open) .menu-sub-link:nth-last-child(6) {
     transition-delay: 0.4s;
   }
+}
 
+/* =================================
+
+   MENU HOVER ANIMATION 修正版
+
+\================================= */
+
+/* 親メニュー全体は動かさない */
+
+.menu-nav .menu-row,
+
+.menu-nav .menu-row:hover {
+  transform: none !important;
+}
+
+/* 親メニューの文字だけ動かす */
+
+.menu-nav .menu-row .menu-label {
+  display: inline-block;
+  transition: transform 0.3s ease !important;
+}
+
+.menu-nav .menu-row:hover .menu-label {
+  transform: translateX(8px) !important;
+}
+
+/* 丸は固定 */
+
+.menu-nav .menu-row .menu-dot {
+  transform: none !important;
+}
+
+/* 展開マークはホバーで動かさない */
+
+.menu-nav .menu-expand .menu-arrow {
+  transition: none !important;
+}
+
+.menu-nav .menu-expand:hover .menu-arrow {
+  transform: none !important;
+}
+
+/* 子メニューのリンク */
+
+.menu-nav .menu-subnav .menu-sub-link {
+  display: block !important;
+  width: fit-content;
+  transition: transform 0.3s ease !important;
+}
+
+/* 子メニューの文字だけ右へ */
+
+.menu-nav .menu-subnav .menu-sub-link:hover {
+  transform: translateX(8px) !important;
+}
+
+/* 子メニューの丸・装飾はなし */
+
+.menu-nav .menu-subnav .menu-sub-link::before,
+
+.menu-nav .menu-subnav .menu-sub-link::after {
+  display: none !important;
 }
