@@ -1464,13 +1464,13 @@ button {
     opacity: 0;
     transform: translateY(-10px);
     border-left: 1px solid #ddd;
-    /* 閉じるときはリンクが消えるのを待ってから収納 */
+    /* 閉じるときはリンクが消えてから、展開時の逆再生で収納 */
     transition:
-      max-height 0.4s ease 0.4s,
-      opacity 0.25s ease 0.4s,
-      transform 0.4s ease 0.4s,
-      margin 0.4s ease 0.4s,
-      padding 0.4s ease 0.4s;
+      max-height 0.4s ease 0.55s,
+      opacity 0.25s ease 0.55s,
+      transform 0.4s ease 0.55s,
+      margin 0.4s ease 0.55s,
+      padding 0.4s ease 0.55s;
   }
   /* 展開時 */
   .menu-group.is-open .menu-subnav {
@@ -1520,24 +1520,24 @@ button {
     transform: translateY(0);
     transition-delay: 0.3s;
   }
-  /* 収納時：下から順番に消える */
+  /* 収納時：展開時の逆順・同じ間隔で消える */
   .menu-group:not(.is-open) .menu-sub-link:nth-last-child(1) {
     transition-delay: 0s;
   }
   .menu-group:not(.is-open) .menu-sub-link:nth-last-child(2) {
-    transition-delay: 0.08s;
+    transition-delay: 0.05s;
   }
   .menu-group:not(.is-open) .menu-sub-link:nth-last-child(3) {
-    transition-delay: 0.16s;
+    transition-delay: 0.1s;
   }
   .menu-group:not(.is-open) .menu-sub-link:nth-last-child(4) {
-    transition-delay: 0.24s;
+    transition-delay: 0.15s;
   }
   .menu-group:not(.is-open) .menu-sub-link:nth-last-child(5) {
-    transition-delay: 0.32s;
+    transition-delay: 0.2s;
   }
   .menu-group:not(.is-open) .menu-sub-link:nth-last-child(6) {
-    transition-delay: 0.4s;
+    transition-delay: 0.25s;
   }
 }
 
@@ -1572,14 +1572,15 @@ button {
   transform: none !important;
 }
 
-/* 展開マークはホバーで動かさない */
+/* 展開マーク：通常は下向き、ホバーまたは展開中は上向き */
 
 .menu-nav .menu-expand .menu-arrow {
-  transition: none !important;
+  transition: transform 0.25s ease !important;
 }
 
-.menu-nav .menu-expand:hover .menu-arrow {
-  transform: none !important;
+.menu-nav .menu-expand:hover .menu-arrow,
+.menu-nav .menu-expand[aria-expanded="true"] .menu-arrow {
+  transform: rotate(225deg) !important;
 }
 
 /* 子メニューのリンク */
@@ -1602,4 +1603,43 @@ button {
 
 .menu-nav .menu-subnav .menu-sub-link::after {
   display: none !important;
+}
+
+
+/* =========================================
+   MENU CLOSE ANIMATION FINAL OVERRIDE
+   展開時の逆再生：下から順番に消えてから収納
+========================================= */
+
+@media screen and (min-width: 768px) {
+  /* 展開時：親メニューを先に開き、リンクを上から順番に表示 */
+  .menu-group.is-open .menu-subnav {
+    transition-delay: 0s !important;
+  }
+
+  .menu-group.is-open .menu-sub-link:nth-child(1) { transition-delay: 0.05s !important; }
+  .menu-group.is-open .menu-sub-link:nth-child(2) { transition-delay: 0.10s !important; }
+  .menu-group.is-open .menu-sub-link:nth-child(3) { transition-delay: 0.15s !important; }
+  .menu-group.is-open .menu-sub-link:nth-child(4) { transition-delay: 0.20s !important; }
+  .menu-group.is-open .menu-sub-link:nth-child(5) { transition-delay: 0.25s !important; }
+  .menu-group.is-open .menu-sub-link:nth-child(6) { transition-delay: 0.30s !important; }
+
+  /* 閉じる時：最後のリンクから逆順に消す */
+  .menu-group:not(.is-open) .menu-sub-link {
+    transition:
+      opacity 0.25s ease,
+      transform 0.3s ease !important;
+  }
+
+  .menu-group:not(.is-open) .menu-sub-link:nth-last-child(1) { transition-delay: 0s !important; }
+  .menu-group:not(.is-open) .menu-sub-link:nth-last-child(2) { transition-delay: 0.05s !important; }
+  .menu-group:not(.is-open) .menu-sub-link:nth-last-child(3) { transition-delay: 0.10s !important; }
+  .menu-group:not(.is-open) .menu-sub-link:nth-last-child(4) { transition-delay: 0.15s !important; }
+  .menu-group:not(.is-open) .menu-sub-link:nth-last-child(5) { transition-delay: 0.20s !important; }
+  .menu-group:not(.is-open) .menu-sub-link:nth-last-child(6) { transition-delay: 0.25s !important; }
+
+  /* 全リンクが消えたあと、親メニューを収納 */
+  .menu-group:not(.is-open) .menu-subnav {
+    transition-delay: 0.55s !important;
+  }
 }
