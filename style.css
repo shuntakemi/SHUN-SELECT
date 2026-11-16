@@ -1643,3 +1643,636 @@ button {
     transition-delay: 0.55s !important;
   }
 }
+
+
+/* =========================================
+   PC PRODUCT SEARCH SCREEN
+========================================= */
+
+.search-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #111;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.search-trigger:hover {
+  opacity: 0.5;
+}
+
+.search-trigger svg {
+  display: block;
+}
+
+.search-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  overflow-y: auto;
+  background: #fff;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    visibility 0.35s ease;
+}
+
+.search-screen.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.search-screen-inner {
+  width: min(1120px, 84%);
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 48px 0 80px;
+}
+
+.search-screen-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.search-screen-label,
+.search-result-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.search-close {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.search-close span {
+  position: absolute;
+  top: 18px;
+  left: 7px;
+  width: 24px;
+  height: 1px;
+  background: #111;
+  transition: transform 0.25s ease;
+}
+
+.search-close span:first-child {
+  transform: rotate(45deg);
+}
+
+.search-close span:last-child {
+  transform: rotate(-45deg);
+}
+
+.search-close:hover span:first-child {
+  transform: rotate(135deg);
+}
+
+.search-close:hover span:last-child {
+  transform: rotate(45deg);
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 55px;
+  padding: 0 0 18px;
+  border-bottom: 1px solid #111;
+}
+
+.search-form-icon {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: #111;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #111;
+  font: inherit;
+  font-size: clamp(20px, 2.4vw, 32px);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.search-input::placeholder {
+  color: #aaa;
+}
+
+.search-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.search-clear {
+  padding: 8px 0 8px 12px;
+  border: 0;
+  background: transparent;
+  color: #999;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+}
+
+.search-clear:hover {
+  color: #111;
+}
+
+.search-result-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 48px 0 22px;
+}
+
+.search-result-count {
+  color: #999;
+  font-size: 10px;
+}
+
+.search-suggestions {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px 18px;
+}
+
+.search-suggestion {
+  min-width: 0;
+  color: #111;
+}
+
+.search-suggestion a {
+  display: block;
+  height: 100%;
+}
+
+.search-suggestion img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  background: #f3f3f3;
+}
+
+.search-suggestion-brand {
+  margin-top: 12px;
+  color: #999;
+  font-size: 10px;
+}
+
+.search-suggestion-name {
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.search-suggestion-price {
+  margin-top: 6px;
+  color: #555;
+  font-size: 11px;
+}
+
+.search-suggestion a:hover {
+  opacity: 0.65;
+}
+
+.search-empty {
+  grid-column: 1 / -1;
+  padding: 35px 0;
+  color: #999;
+  font-size: 12px;
+}
+
+body.search-is-open {
+  overflow: hidden;
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .search-screen-inner {
+    width: 90%;
+  }
+
+  .search-suggestions {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .search-screen {
+    display: none !important;
+  }
+}
+
+
+/* =========================================
+   SEARCH HISTORY
+========================================= */
+.search-history-heading {
+  margin: 0 0 18px;
+}
+
+.search-history-heading:not(:first-child) {
+  margin-top: 42px;
+}
+
+.search-history-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px 18px;
+}
+
+.search-history-grid + .search-history-heading {
+  margin-top: 44px;
+}
+
+.search-suggestion-result {
+  min-width: 0;
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .search-history-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+
+/* =========================================
+   SEARCH WINDOW - CENTER MODAL
+========================================= */
+
+/* 背景 */
+.search-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 20px;
+  overflow-y: auto;
+
+  background: rgba(0, 0, 0, 0.38);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: none;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+/* 表示 */
+.search-screen.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+}
+
+/* 中央の検索ウィンドウ */
+.search-screen-inner {
+  width: min(760px, calc(100vw - 40px));
+  min-height: 0;
+  max-height: calc(100vh - 80px);
+
+  margin: auto;
+  padding: 36px 40px 42px;
+
+  overflow-y: auto;
+
+  background: #fff;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.12);
+
+  transform: translateY(15px) scale(0.97);
+
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ウィンドウのアニメーション */
+.search-screen.is-open .search-screen-inner {
+  transform: translateY(0) scale(1);
+}
+
+/* 上部 */
+.search-screen-top {
+  padding-bottom: 20px;
+}
+
+/* 検索フォーム */
+.search-form {
+  margin-top: 30px;
+}
+
+/* 検索結果の見出し */
+.search-result-heading {
+  margin: 32px 0 18px;
+}
+
+/* 商品一覧 */
+.search-suggestions,
+.search-history-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px 14px;
+}
+
+/* 履歴の間隔 */
+.search-history-heading:not(:first-child) {
+  margin-top: 30px;
+}
+
+/* 商品画像 */
+.search-suggestion img {
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+/* PC小さめ画面 */
+@media (max-width: 900px) and (min-width: 768px) {
+  .search-screen-inner {
+    width: min(680px, calc(100vw - 40px));
+    padding: 30px 28px;
+  }
+
+  .search-suggestions,
+  .search-history-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* モバイルでは従来どおり非表示 */
+@media (max-width: 767px) {
+  .search-screen {
+    display: none !important;
+  }
+}
+
+/* 検索中の背景スクロール防止 */
+body.search-is-open {
+  overflow: hidden;
+}
+
+
+/* 検索ウィンドウの角丸 */
+.search-screen-inner {
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+/* スクロールはウィンドウ内で維持 */
+.search-screen-inner {
+  overflow-y: auto;
+}
+
+
+/* =========================================
+   MOBILE SLIDE MENU
+   左から右へスライド
+========================================= */
+
+@media screen and (max-width: 767px) {
+
+  /* メニューを開いたときの背景 */
+  .mobile-menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.38);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+  }
+
+  body.mobile-menu-open .mobile-menu-overlay {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  /* メニュー本体 */
+  .sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 2001 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    width: min(340px, 85vw) !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+
+    margin: 0 !important;
+    padding: 35px 28px !important;
+
+    overflow: hidden !important;
+    background: #fff !important;
+
+    transform: translateX(-105%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    box-shadow: 10px 0 35px rgba(0, 0, 0, 0.08);
+  }
+
+  body.mobile-menu-open .sidebar {
+    transform: translateX(0);
+  }
+
+  /* メニュー内部のスクロール */
+  .sidebar-scroll {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  /* INDEXはメニュー内では隠す */
+  .sidebar-scroll .index-title,
+  .sidebar-scroll .index-nav {
+    display: none !important;
+  }
+
+  /* MENUを表示 */
+  .sidebar-scroll .menu-title {
+    display: block !important;
+    margin-top: 15px !important;
+    margin-bottom: 30px !important;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+  }
+
+  .sidebar-scroll .menu-nav {
+    display: flex !important;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  /* メニュー文字 */
+  .sidebar-scroll .menu-row {
+    grid-template-columns: 5px minmax(0, 1fr) 30px;
+    font-size: 11px;
+  }
+
+  /* 展開矢印 */
+  .sidebar-scroll .menu-arrow {
+    justify-self: center;
+  }
+
+  /* スマホ版サブメニュー */
+  .sidebar-scroll .menu-group .menu-subnav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    max-height: 0;
+    overflow: hidden;
+    margin: 0 0 0 7px;
+    padding: 0 0 0 17px;
+
+    opacity: 0;
+    border-left: 1px solid #ddd;
+
+    transition:
+      max-height 0.35s ease,
+      opacity 0.25s ease,
+      margin 0.35s ease,
+      padding 0.35s ease;
+  }
+
+  .sidebar-scroll .menu-group.is-open .menu-subnav {
+    max-height: 500px;
+    margin: 16px 0 5px 7px;
+    padding: 2px 0 2px 17px;
+    opacity: 1;
+  }
+
+  .sidebar-scroll .menu-sub-link {
+    display: block;
+    font-size: 10px;
+  }
+
+  /* 三本線ボタンを前面に */
+  .menu-toggle {
+    position: relative;
+    z-index: 2003;
+  }
+
+  /* メニューが開いている間の背景スクロール防止 */
+  body.mobile-menu-open {
+    overflow: hidden;
+  }
+}
+
+/* =========================================
+   BRAND 12 ITEMS FIX
+   12項目すべてを表示
+========================================= */
+
+@media screen and (min-width: 768px) {
+
+  /* 展開エリア */
+  .menu-group.is-open .menu-subnav {
+    max-height: 1000px;
+    overflow: hidden;
+  }
+
+  /* 7〜12番目も表示 */
+  .menu-group.is-open .menu-sub-link:nth-child(n+7) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* 7〜12番目の表示アニメーション */
+  .menu-group.is-open .menu-sub-link:nth-child(7) {
+    transition-delay: 0.35s;
+  }
+
+  .menu-group.is-open .menu-sub-link:nth-child(8) {
+    transition-delay: 0.40s;
+  }
+
+  .menu-group.is-open .menu-sub-link:nth-child(9) {
+    transition-delay: 0.45s;
+  }
+
+  .menu-group.is-open .menu-sub-link:nth-child(10) {
+    transition-delay: 0.50s;
+  }
+
+  .menu-group.is-open .menu-sub-link:nth-child(11) {
+    transition-delay: 0.55s;
+  }
+
+  .menu-group.is-open .menu-sub-link:nth-child(12) {
+    transition-delay: 0.60s;
+  }
+
+}
+
+/* スマホメニュー下部のショップ情報 */
+@media screen and (max-width: 767px) {
+
+  .mobile-shop-info {
+    display: block;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    flex-shrink: 0;
+    font-size: 9px;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    color: #777;
+  }
+
+  .mobile-shop-info p {
+    margin: 0;
+  }
+
+  .mobile-shop-info p:first-child {
+    margin-bottom: 5px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: #222;
+  }
+}
+
+/* PC版では表示しない */
+@media screen and (min-width: 768px) {
+  .mobile-shop-info {
+    display: none;
+  }
+}

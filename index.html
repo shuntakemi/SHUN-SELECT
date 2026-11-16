@@ -31,12 +31,12 @@
         </h1>
 
         <div class="header-tools">
-          <a href="#" aria-label="Search">
+          <button class="search-trigger" type="button" aria-label="検索を開く">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="10.8" cy="10.8" r="6.8"/>
               <path d="m16 16 5 5"/>
             </svg>
-          </a>
+          </button>
 
           <a href="#" aria-label="Login">
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -146,12 +146,12 @@
     </h2>
 
     <div class="header-tools">
-      <a href="#" aria-label="Search">
+      <button class="search-trigger" type="button" aria-label="検索を開く">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="10.8" cy="10.8" r="6.8"/>
           <path d="m16 16 5 5"/>
         </svg>
-      </a>
+      </button>
 
       <a href="#" aria-label="Login">
         <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -180,7 +180,7 @@
       <a href="#new-arrivals" class="index-link active">NEW ARRIVALS</a>
       <a href="#brands" class="index-link">FEATURED BRANDS</a>
       <a href="#styling" class="index-link">STYLING</a>
-      <a href="#categories" class="index-link">ITEM CATEGORY</a>
+      <a href="#brand-list" class="index-link">BRAND LIST</a>
     </nav>
 
     <p class="index-title menu-title">MENU</p>
@@ -198,19 +198,28 @@
       </a>
 
       <!-- BRAND -->
-      <div class="menu-group">
-        <button class="menu-row menu-expand" type="button" aria-expanded="false">
-          <span class="menu-dot"></span>
-          <span class="menu-label">BRAND</span>
-          <span class="menu-arrow"></span>
-        </button>
+<div class="menu-group">
+  <button class="menu-row menu-expand" type="button" aria-expanded="false">
+    <span class="menu-dot"></span>
+    <span class="menu-label">BRAND</span>
+    <span class="menu-arrow"></span>
+  </button>
 
-        <div class="menu-subnav">
-          <a href="#" class="menu-sub-link">BRAND A</a>
-          <a href="#" class="menu-sub-link">BRAND B</a>
-          <a href="#" class="menu-sub-link">BRAND C</a>
-        </div>
-      </div>
+  <div class="menu-subnav">
+    <a href="FEATURED BRANDS01.html" class="menu-sub-link">BRAND 01</a>
+    <a href="FEATURED BRANDS02.html" class="menu-sub-link">BRAND 02</a>
+    <a href="FEATURED BRANDS03.html" class="menu-sub-link">BRAND 03</a>
+    <a href="FEATURED BRANDS04.html" class="menu-sub-link">BRAND 04</a>
+    <a href="FEATURED BRANDS05.html" class="menu-sub-link">BRAND 05</a>
+    <a href="FEATURED BRANDS06.html" class="menu-sub-link">BRAND 06</a>
+    <a href="FEATURED BRANDS07.html" class="menu-sub-link">BRAND 07</a>
+    <a href="FEATURED BRANDS08.html" class="menu-sub-link">BRAND 08</a>
+    <a href="FEATURED BRANDS09.html" class="menu-sub-link">BRAND 09</a>
+    <a href="FEATURED BRANDS10.html" class="menu-sub-link">BRAND 10</a>
+    <a href="FEATURED BRANDS11.html" class="menu-sub-link">BRAND 11</a>
+    <a href="FEATURED BRANDS12.html" class="menu-sub-link">BRAND 12</a>
+  </div>
+</div>
 
       <!-- CATEGORY -->
       <div class="menu-group">
@@ -233,7 +242,12 @@
     </nav>
 
   </div>
-
+<div class="mobile-shop-info">
+  <p>SHOP NAME</p>
+  <p>〒000-0000 東京都〇〇区〇〇</p>
+  <p>TEL：000-000-0000</p>
+  <p>OPEN：10:00 - 19:00</p>
+</div>
 </aside>
 
 
@@ -692,6 +706,44 @@
   </footer>
 
   <div class="category-cursor" aria-hidden="true"></div>
+
+
+  <!-- PC SEARCH SCREEN -->
+  <section class="search-screen" id="search-screen" aria-hidden="true" aria-label="商品検索">
+    <div class="search-screen-inner">
+      <div class="search-screen-top">
+        <p class="search-screen-label">SEARCH</p>
+        <button class="search-close" type="button" aria-label="検索を閉じる">
+          <span></span><span></span>
+        </button>
+      </div>
+
+      <form class="search-form" role="search" autocomplete="off">
+        <svg class="search-form-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="10.8" cy="10.8" r="6.8"></circle>
+          <path d="m16 16 5 5"></path>
+        </svg>
+        <input
+          class="search-input"
+          id="product-search-input"
+          type="search"
+          placeholder="商品名・ブランド名で検索"
+          aria-label="商品名・ブランド名で検索"
+          aria-controls="search-suggestions"
+          aria-autocomplete="list"
+        >
+        <button class="search-clear" type="button" aria-label="入力をクリア">CLEAR</button>
+      </form>
+
+      <div class="search-result-heading">
+        <p class="search-result-label">SUGGESTIONS</p>
+        <p class="search-result-count" aria-live="polite"></p>
+      </div>
+      <div class="search-suggestions" id="search-suggestions" role="listbox">
+        <p class="search-empty">キーワードを入力すると、商品が表示されます。</p>
+      </div>
+    </div>
+  </section>
 
 </body>
 </html>
