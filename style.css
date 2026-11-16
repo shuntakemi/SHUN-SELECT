@@ -2276,3 +2276,303 @@ body.search-is-open {
     display: none;
   }
 }
+
+
+/* =========================================
+   MOBILE FIX FINAL
+   INDEX / SLIDE MENU / HEADER
+========================================= */
+
+@media screen and (max-width: 767px) {
+
+  /* ---------------------------------
+     1. 親要素の重なり順を解除
+  --------------------------------- */
+
+  .site-shell {
+    z-index: auto !important;
+  }
+
+  /* ---------------------------------
+     2. 通常時のスマホINDEX
+  --------------------------------- */
+
+  .sidebar {
+    position: sticky !important;
+    top: 64px !important;
+    left: auto !important;
+    z-index: 1000 !important;
+
+    display: block !important;
+    width: calc(100% + 10%) !important;
+    height: auto !important;
+
+    margin: 0 -5% 35px !important;
+    padding: 0 5% !important;
+
+    overflow: visible !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+
+    transform: none !important;
+    box-shadow: none !important;
+
+    transition: top 0.25s ease !important;
+  }
+
+  .sidebar-header {
+    display: none !important;
+  }
+
+  .sidebar-scroll {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* INDEXを表示 */
+
+  .sidebar-scroll .index-title {
+    display: none !important;
+  }
+
+  .sidebar-scroll .index-nav {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: center;
+    gap: 0;
+    padding: 12px 0;
+    overflow: hidden;
+  }
+
+  .sidebar-scroll .index-link {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    padding: 0 1px 5px;
+    font-size: 7px;
+    white-space: nowrap;
+  }
+
+  .sidebar-scroll .index-link::before {
+    display: none !important;
+  }
+
+  .sidebar-scroll .index-link::after {
+    content: "";
+    position: absolute;
+    left: 20%;
+    bottom: 0;
+    width: 60%;
+    height: 1px;
+    background: #111;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+  }
+
+  .sidebar-scroll .index-link.active::after {
+    transform: scaleX(1);
+  }
+
+  /* 通常時はMENUを隠す */
+
+  .sidebar-scroll .menu-title,
+  .sidebar-scroll .menu-nav {
+    display: none !important;
+  }
+
+  /* ---------------------------------
+     3. ヘッダーの表示制御
+  --------------------------------- */
+
+  .header {
+    z-index: 1001 !important;
+  }
+
+  .header.is-hidden {
+    transform: translateY(-100%);
+  }
+
+  .sidebar.is-header-hidden {
+    top: 0 !important;
+  }
+
+  /* ---------------------------------
+     4. オーバーレイ
+  --------------------------------- */
+
+  .mobile-menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2001;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+      opacity 0.35s ease,
+      visibility 0.35s ease;
+  }
+
+  body.mobile-menu-open .mobile-menu-overlay {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  /* ---------------------------------
+     5. メニュー本体
+  --------------------------------- */
+
+  body.mobile-menu-open .sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 2002 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    width: min(340px, 85vw) !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+
+    margin: 0 !important;
+    padding: 35px 28px !important;
+
+    overflow: hidden !important;
+
+    background: #fff !important;
+
+    transform: translateX(0) !important;
+
+    box-shadow: 10px 0 35px rgba(0, 0, 0, 0.08);
+  }
+
+  body.mobile-menu-open .sidebar-scroll {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  /* メニューを開いたらINDEXを隠す */
+
+  body.mobile-menu-open .sidebar-scroll .index-title,
+  body.mobile-menu-open .sidebar-scroll .index-nav {
+    display: none !important;
+  }
+
+  /* メニューを表示 */
+
+  body.mobile-menu-open .sidebar-scroll .menu-title {
+    display: block !important;
+    margin-top: 15px !important;
+    margin-bottom: 30px !important;
+    font-size: 12px;
+  }
+
+  body.mobile-menu-open .sidebar-scroll .menu-nav {
+    display: flex !important;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  body.mobile-menu-open .sidebar-scroll .menu-row {
+    grid-template-columns: 5px minmax(0, 1fr) 30px;
+    font-size: 11px;
+  }
+
+  /* スマホ用アコーディオン */
+
+  body.mobile-menu-open .sidebar-scroll .menu-group .menu-subnav {
+    display: flex !important;
+    flex-direction: column;
+    gap: 15px;
+
+    max-height: 0;
+    overflow: hidden;
+    margin: 0 0 0 7px;
+    padding: 0 0 0 17px;
+
+    opacity: 0;
+    border-left: 1px solid #ddd;
+
+    transition:
+      max-height 0.35s ease,
+      opacity 0.25s ease,
+      margin 0.35s ease,
+      padding 0.35s ease;
+  }
+
+  body.mobile-menu-open .sidebar-scroll .menu-group.is-open .menu-subnav {
+    max-height: 500px;
+    margin: 16px 0 5px 7px;
+    padding: 2px 0 2px 17px;
+    opacity: 1;
+  }
+
+  body.mobile-menu-open .sidebar-scroll .menu-sub-link {
+    display: block;
+    font-size: 10px;
+  }
+
+  /* メニュー下部のショップ情報 */
+
+  body.mobile-menu-open .mobile-shop-info {
+    display: block;
+    flex-shrink: 0;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+  }
+
+  /* メニューを開いている間はスクロール禁止 */
+
+  body.mobile-menu-open {
+    overflow: hidden !important;
+  }
+
+  /* ヘッダーはメニューより前面 */
+
+  body.mobile-menu-open .header {
+    z-index: 2003 !important;
+  }
+
+}
+
+
+/* MOBILE MENU CLOSE BUTTON */
+
+.mobile-menu-close {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .mobile-menu-close {
+    display: flex;
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    z-index: 10002;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #111;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 1;
+    cursor: pointer;
+  }
+}
