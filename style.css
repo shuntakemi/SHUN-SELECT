@@ -2137,3 +2137,126 @@ body.search-is-open {
     text-align: center;
   }
 }
+
+/* =========================================
+   PAGE TOP BUTTON
+========================================= */
+
+.page-top {
+  position: fixed;
+  right: 15px;
+  bottom: 40px;
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #111;
+  cursor: pointer;
+
+  /* 最初は非表示 */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+   color: #fff;
+  mix-blend-mode: difference;
+  
+}
+
+/* メインビジュアルを過ぎたら表示 */
+.page-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.page-top-arrow {
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.page-top-text {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  transform: none;
+}
+
+.page-top:hover .page-top-arrow {
+  transform: translateY(-5px);
+}
+
+/* スマホ */
+@media screen and (max-width: 767px) {
+  .page-top {
+    right: 15px;
+    bottom: 25px;
+    gap: 10px;
+  }
+
+  .page-top-arrow {
+    font-size: 22px;
+  }
+
+  .page-top-text {
+    font-size: 9px;
+  }
+}
+
+/* =========================================
+   MOBILE：メインビジュアルのスライド切り替え
+========================================= */
+
+@media screen and (max-width: 767px) {
+
+  .slide-pagination {
+    right: 4%;
+    bottom: 20px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .slide-pagination button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+    height: 24px;
+    padding: 0;
+
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  /* ●の見た目 */
+  .slide-pagination button::before {
+    content: "";
+    display: block;
+    width: 7px;
+    height: 7px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background: transparent;
+  }
+
+  /* 選択中の● */
+  .slide-pagination button.active::before {
+    background: #fff;
+  }
+
+}

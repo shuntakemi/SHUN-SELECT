@@ -725,4 +725,36 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+    /* =========================================
+     08. PAGE TOP
+  ========================================= */
+
+  const pageTopButton = document.querySelector(".page-top");
+  const mainVisual = document.querySelector(".main-visual");
+
+  if (pageTopButton && mainVisual) {
+
+    function checkPageTop() {
+      const visualBottom = mainVisual.getBoundingClientRect().bottom;
+
+      if (visualBottom <= 0) {
+        pageTopButton.classList.add("is-visible");
+      } else {
+        pageTopButton.classList.remove("is-visible");
+      }
+    }
+
+    window.addEventListener("scroll", checkPageTop, {
+      passive: true
+    });
+
+    checkPageTop();
+
+    pageTopButton.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  }
 });
