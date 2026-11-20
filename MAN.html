@@ -11,6 +11,29 @@
 <body class="man-page">
 <div class="site-shell">
 
+  <!-- MOBILE HEADER: INDEXと共通 -->
+  <header class="header man-mobile-header">
+    <div class="header-inner">
+      <button class="menu-toggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <h1 class="site-logo"><a href="index.html">SELECT SHOP</a></h1>
+      <div class="header-tools">
+        <button class="search-trigger" type="button" aria-label="検索を開く">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+        </button>
+        <a href="#" aria-label="Login"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="3.5"/><path d="M4.5 21c.5-4.2 3.4-6.5 7.5-6.5s7 2.3 7.5 6.5"/></svg></a>
+        <a href="#" aria-label="Cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 3h2.8l2.2 12.2h11.8l2-9H6"/><circle cx="9" cy="19.5" r="1.2"/><circle cx="18" cy="19.5" r="1.2"/></svg></a>
+      </div>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="メインメニュー" hidden><a href="MAN.html">MEN</a><a href="WOMAN.html">WOMEN</a></nav>
+  </header>
+  <div class="man-mobile-active-filters" id="man-mobile-active-filters" aria-label="選択中の絞り込み">
+    <button type="button" class="man-chip-filter-button" id="man-chip-filter-button" aria-label="フィルターを開く" aria-controls="man-filter-panel">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16M7 12h10M10 19h4"/></svg>
+    </button>
+    <div class="man-mobile-chip-scroll" id="man-mobile-chip-scroll"></div>
+  </div>
 
     <div class="page-layout">
       <!-- SIDEBAR -->
@@ -60,18 +83,18 @@
           <span class="menu-dot"></span><span class="menu-label">BRAND</span><span class="menu-arrow"></span>
         </button>
         <div class="menu-subnav man-filter-options" data-filter-group="brand">
-          <label class="man-filter-option"><input type="checkbox" value="BRAND 01"><span>BRAND 01</span></label>
-          <label class="man-filter-option"><input type="checkbox" value="BRAND 02"><span>BRAND 02</span></label>
-          <label class="man-filter-option"><input type="checkbox" value="BRAND 03"><span>BRAND 03</span></label>
-          <label class="man-filter-option"><input type="checkbox" value="BRAND 04"><span>BRAND 04</span></label>
-          <label class="man-filter-option"><input type="checkbox" value="BRAND 05"><span>BRAND 05</span></label>
-          <label class="man-filter-option"><input type="checkbox" value="BRAND 06"><span>BRAND 06</span></label>
-          <label class="man-filter-option"><input type="checkbox" value="BRAND 07"><span>BRAND 07</span></label>
-          <label class="man-filter-option"><input type="checkbox" value="BRAND 08"><span>BRAND 08</span></label>
-          <label class="man-filter-option"><input type="checkbox" value="BRAND 09"><span>BRAND 09</span></label>
-          <label class="man-filter-option"><input type="checkbox" value="BRAND 10"><span>BRAND 10</span></label>
-          <label class="man-filter-option"><input type="checkbox" value="BRAND 11"><span>BRAND 11</span></label>
-          <label class="man-filter-option"><input type="checkbox" value="BRAND 12"><span>BRAND 12</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="BRAND 01"><span>BRAND 01</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="BRAND 02"><span>BRAND 02</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="BRAND 03"><span>BRAND 03</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="BRAND 04"><span>BRAND 04</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="BRAND 05"><span>BRAND 05</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="BRAND 06"><span>BRAND 06</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="BRAND 07"><span>BRAND 07</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="BRAND 08"><span>BRAND 08</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="BRAND 09"><span>BRAND 09</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="BRAND 10"><span>BRAND 10</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="BRAND 11"><span>BRAND 11</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="BRAND 12"><span>BRAND 12</span></label>
         </div>
       </div>
       <div class="menu-group man-filter-group">
@@ -79,15 +102,15 @@
           <span class="menu-dot"></span><span class="menu-label">CATEGORY</span><span class="menu-arrow"></span>
         </button>
         <div class="menu-subnav man-filter-options" data-filter-group="category">
-          <label class="man-filter-option"><input type="checkbox" value="TOPS"><span>TOPS</span></label>
-          <label class="man-filter-option"><input type="checkbox" value="SHIRTS"><span>SHIRTS</span></label>
-          <label class="man-filter-option"><input type="checkbox" value="KNIT"><span>KNIT</span></label>
-          <label class="man-filter-option"><input type="checkbox" value="PANTS"><span>PANTS</span></label>
-          <label class="man-filter-option"><input type="checkbox" value="DENIM"><span>DENIM</span></label>
-          <label class="man-filter-option"><input type="checkbox" value="OUTER"><span>OUTER</span></label>
-          <label class="man-filter-option"><input type="checkbox" value="SHOES"><span>SHOES</span></label>
-          <label class="man-filter-option"><input type="checkbox" value="BAGS"><span>BAGS</span></label>
-          <label class="man-filter-option"><input type="checkbox" value="ACCESSORIES"><span>ACCESSORIES</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="TOPS"><span>TOPS</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="SHIRTS"><span>SHIRTS</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="KNIT"><span>KNIT</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="PANTS"><span>PANTS</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="DENIM"><span>DENIM</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="OUTER"><span>OUTER</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="SHOES"><span>SHOES</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="BAGS"><span>BAGS</span></label>
+          <label class="menu-sub-link man-filter-option"><input type="checkbox" value="ACCESSORIES"><span>ACCESSORIES</span></label>
         </div>
       </div>
       <div class="man-price-filter">
