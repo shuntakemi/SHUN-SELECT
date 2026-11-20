@@ -66,8 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================
      02. INDEX NAVIGATION
-     NEW ARRIVALS / FEATURED BRANDS /
-     STYLING / BRAND LIST
   ========================================= */
 
   const indexLinks = document.querySelectorAll(".index-link");
@@ -135,9 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================
      03. MOBILE HEADER SCROLL CONTROL
-     - ページ最上部では必ず表示
-     - 下にスクロールすると非表示
-     - 上にスクロールすると表示
   ========================================= */
 
   const mainHeader = document.querySelector(".header");
@@ -170,13 +165,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleScroll() {
       const currentScrollY = window.scrollY;
 
-      // PCでは常にヘッダーを表示
       if (!mobileQuery.matches) {
         resetScrollControl();
         return;
       }
 
-      // ページ最上部では必ずヘッダーを表示
       if (currentScrollY <= 5) {
         showHeader();
         accumulatedDelta = 0;
@@ -185,7 +178,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // INDEXがヘッダー位置に到達するまでは表示
       if (sidebar) {
         const headerHeight = mainHeader.offsetHeight;
         const sidebarTop = sidebar.getBoundingClientRect().top;
@@ -214,12 +206,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       accumulatedDelta += difference;
 
-      // 下方向に8px以上スクロールしたら隠す
       if (accumulatedDelta >= 8) {
         hideHeader();
       }
 
-      // 上方向に8px以上スクロールしたら表示
       if (accumulatedDelta <= -8) {
         showHeader();
       }
@@ -378,162 +368,96 @@ document.addEventListener("DOMContentLoaded", () => {
         price: product.price || ""
       };
 
-      const current = readRecent(key).filter(
+      const list = readRecent(key).filter(
         entry => entry.href !== item.href
       );
 
-      current.unshift(item);
+      list.unshift(item);
 
       try {
-        localStorage.setItem(
-          key,
-          JSON.stringify(current.slice(0, 8))
-        );
+        localStorage.setItem(key, JSON.stringify(list.slice(0, 10)));
       } catch (error) {
-        // 保存できない環境では履歴機能のみ停止
+        // Storage unavailable
       }
     }
 
-
-    /* PRODUCT CARD */
-
-    function createProductCard(product) {
-      const article = document.createElement("article");
-      article.className = "search-suggestion";
-
-      const link = document.createElement("a");
-      link.href = product.href;
-
-      if (product.image) {
-        const image = document.createElement("img");
-        image.src = product.image;
-        image.alt = product.imageAlt || product.name;
-        image.loading = "lazy";
-        link.appendChild(image);
-      }
-
-      if (product.brand) {
-        const brand = document.createElement("p");
-        brand.className = "search-suggestion-brand";
-        brand.textContent = product.brand;
-        link.appendChild(brand);
-      }
-
-      const name = document.createElement("p");
-      name.className = "search-suggestion-name";
-      name.textContent = product.name;
-      link.appendChild(name);
-
-      if (product.price) {
-        const price = document.createElement("p");
-        price.className = "search-suggestion-price";
-        price.textContent = product.price;
-        link.appendChild(price);
-      }
-
-      article.appendChild(link);
-
-      return article;
+    function getRecentProducts(key) {
+      return readRecent(key).map(item => ({
+        ...item,
+        searchText: `${item.name} ${item.brand} ${item.price}`
+          .toLocaleLowerCase("ja")
+      }));
     }
 
+    const recentSearches = getRecentProducts(RECENT_SEARCH_KEY);
+    const recentViews = getRecentProducts(RECENT_VIEW_KEY);
 
-    /* HISTORY SECTION */
 
-    function appendHistorySection(title, key) {
-      const history = readRecent(key);
+    /* SEARCH DISPLAY */
 
-      if (!history.length) return;
+    function createSearchCard(product) {
+      const card = document.createElement("a");
+      card.className = "search-suggestion";
+      card.href = product.href;
 
-      const heading = document.createElement("div");
-      heading.className = "search-history-heading";
+      const image = document.createElement("img");
+      image.src = product.image || "";
+      image.alt = product.imageAlt || product.name;
 
-      const label = document.createElement("p");
-      label.className = "search-result-label";
-      label.textContent = title;
+      const info = document.createElement("div");
+      info.className = "search-suggestion-info";
 
-      heading.appendChild(label);
-      searchResults.appendChild(heading);
+      const brandName = document.createElement("p");
+      brandName.className = "search-suggestion-brand";
+      brandName.textContent = product.brand || "";
 
-      const grid = document.createElement("div");
-      grid.className = "search-history-grid";
+      const productName = document.createElement("p");
+      productName.className = "search-suggestion-name";
+      productName.textContent = product.name;
 
-      history.slice(0, 4).forEach(product => {
-        grid.appendChild(createProductCard(product));
+      const price = document.createElement("p");
+      price.className = "search-suggestion-price";
+      price.textContent = product.price || "";
+
+      info.append(brandName, productName, price);
+      card.append(image, info);
+
+      card.addEventListener("click", () => {
+        saveRecent(RECENT_SEARCH_KEY, product);
+        saveRecent(RECENT_VIEW_KEY, product);
       });
 
-      searchResults.appendChild(grid);
-    }
-
-
-    /* SEARCH RESULT DISPLAY */
-
-    function normalizeSearch(value) {
-      return value
-        .trim()
-        .toLocaleLowerCase("ja")
-        .replace(/\s+/g, " ");
+      return card;
     }
 
     function renderSearchResults() {
-      const keyword = normalizeSearch(searchInput.value);
-
-      const matched = keyword
-        ? products.filter(product =>
-            product.searchText.includes(keyword)
-          )
-        : [];
-
+      const query = searchInput.value.trim().toLocaleLowerCase("ja");
       searchResults.replaceChildren();
 
-      if (!keyword) {
-        if (searchCount) searchCount.textContent = "";
+      let matches = [];
 
-        appendHistorySection(
-          "最近検索した商品",
-          RECENT_SEARCH_KEY
-        );
-
-        appendHistorySection(
-          "最近見た商品",
-          RECENT_VIEW_KEY
-        );
-
-        if (!searchResults.children.length) {
-          const message = document.createElement("p");
-          message.className = "search-empty";
-          message.textContent =
-            "キーワードを入力すると、商品を検索できます。";
-
-          searchResults.appendChild(message);
+      if (!query) {
+        if (recentSearches.length) {
+          matches = recentSearches;
+          searchCount.textContent = "最近検索した商品";
+        } else {
+          matches = recentViews;
+          searchCount.textContent = "最近見た商品";
         }
 
-        return;
+        if (!matches.length) {
+          searchCount.textContent = "商品名・ブランド名で検索";
+        }
+      } else {
+        matches = products.filter(product =>
+          product.searchText.includes(query)
+        );
+
+        searchCount.textContent = `${matches.length}件の商品`;
       }
 
-      if (searchCount) {
-        searchCount.textContent = `${matched.length} ITEMS`;
-      }
-
-      if (!matched.length) {
-        const message = document.createElement("p");
-        message.className = "search-empty";
-        message.textContent =
-          "該当する商品が見つかりませんでした。別のキーワードでお試しください。";
-
-        searchResults.appendChild(message);
-        return;
-      }
-
-      matched.slice(0, 12).forEach(product => {
-        const card = createProductCard(product);
-        card.classList.add("search-suggestion-result");
-
-        card.querySelector("a")?.addEventListener("click", () => {
-          saveRecent(RECENT_SEARCH_KEY, product);
-          saveRecent(RECENT_VIEW_KEY, product);
-        });
-
-        searchResults.appendChild(card);
+      matches.forEach(product => {
+        searchResults.appendChild(createSearchCard(product));
       });
     }
 
@@ -635,13 +559,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  
   /* =========================================
      07. MOBILE MENU OPEN / CLOSE
-     - 背景を暗くする
-     - メニュー右上に閉じるボタン（×）
-     - メニュー内のクリックでは閉じない
-     - 背景クリックでも閉じる
   ========================================= */
 
   const menuButton = document.querySelector(".menu-toggle");
@@ -657,7 +576,6 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.appendChild(overlay);
     }
 
-    // 閉じるボタンを作成
     let closeButton = mobileSidebar.querySelector(".mobile-menu-close");
 
     if (!closeButton) {
@@ -680,7 +598,6 @@ document.addEventListener("DOMContentLoaded", () => {
       menuButton.setAttribute("aria-expanded", "false");
     }
 
-    // メニューボタン
     menuButton.addEventListener("click", event => {
       event.stopPropagation();
 
@@ -694,21 +611,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // ×ボタンで閉じる
     closeButton.addEventListener("click", event => {
       event.stopPropagation();
       closeMenu();
     });
 
-    // メニュー内のクリックでは閉じない
     mobileSidebar.addEventListener("click", event => {
       event.stopPropagation();
     });
 
-    // 背景クリックで閉じる
     overlay.addEventListener("click", closeMenu);
 
-    // ESCキーで閉じる
     document.addEventListener("keydown", event => {
       if (
         event.key === "Escape" &&
@@ -718,14 +631,15 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // PC表示に切り替わったら閉じる
     window.addEventListener("resize", () => {
       if (window.innerWidth >= 768) {
         closeMenu();
       }
     });
   }
-    /* =========================================
+
+
+  /* =========================================
      08. PAGE TOP
   ========================================= */
 
@@ -757,4 +671,197 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+});
+
+
+/* =========================================
+   09. MAN FILTER
+   BRAND / CATEGORY / PRICE / STOCK
+========================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const filterPanel = document.querySelector(".man-filter-panel");
+
+  if (!filterPanel) return;
+
+  const productCards = Array.from(
+    document.querySelectorAll(".product-item")
+  );
+
+  const brandChecks = filterPanel.querySelectorAll(
+    '[data-filter-group="brand"] input[type="checkbox"]'
+  );
+
+  const categoryChecks = filterPanel.querySelectorAll(
+    '[data-filter-group="category"] input[type="checkbox"]'
+  );
+
+  const minPrice = document.getElementById("min-price");
+  const maxPrice = document.getElementById("max-price");
+  const stockOnly = document.getElementById("stock-only");
+  const clearButton = document.getElementById("filter-clear");
+  const resultCount = document.getElementById("result-count");
+  const emptyMessage = document.querySelector(".man-filter-result-empty");
+  const mobileTrigger = document.querySelector(".man-filter-trigger");
+  const sidebar = document.querySelector(".sidebar");
+
+
+  /* FILTER PROCESS */
+
+  function applyFilters() {
+
+    const selectedBrands = Array.from(brandChecks)
+      .filter(check => check.checked)
+      .map(check => check.value);
+
+    const selectedCategories = Array.from(categoryChecks)
+      .filter(check => check.checked)
+      .map(check => check.value);
+
+    const min = minPrice && minPrice.value !== ""
+      ? Number(minPrice.value)
+      : 0;
+
+    const max = maxPrice && maxPrice.value !== ""
+      ? Number(maxPrice.value)
+      : Infinity;
+
+    const onlyInStock = Boolean(
+      stockOnly && stockOnly.checked
+    );
+
+    let hits = 0;
+
+    productCards.forEach(card => {
+
+      const brand = card.dataset.brand || "";
+      const category = card.dataset.category || "";
+      const price = Number(card.dataset.price);
+      const inStock = card.dataset.stock === "true";
+
+      const brandMatch =
+        selectedBrands.length === 0 ||
+        selectedBrands.includes(brand);
+
+      const categoryMatch =
+        selectedCategories.length === 0 ||
+        selectedCategories.includes(category);
+
+      const priceMatch =
+        Number.isFinite(price) &&
+        price >= min &&
+        price <= max;
+
+      const stockMatch =
+        !onlyInStock || inStock;
+
+      const show =
+        brandMatch &&
+        categoryMatch &&
+        priceMatch &&
+        stockMatch;
+
+      card.classList.toggle("filter-hidden", !show);
+
+      if (show) hits++;
+    });
+
+    if (resultCount) {
+      resultCount.textContent = String(hits);
+    }
+
+    if (emptyMessage) {
+      emptyMessage.hidden = hits !== 0;
+    }
+  }
+
+
+  /* EVENT LISTENERS */
+
+  brandChecks.forEach(check => {
+    check.addEventListener("change", applyFilters);
+  });
+
+  categoryChecks.forEach(check => {
+    check.addEventListener("change", applyFilters);
+  });
+
+  minPrice?.addEventListener("input", applyFilters);
+  maxPrice?.addEventListener("input", applyFilters);
+
+  stockOnly?.addEventListener("change", applyFilters);
+
+
+  /* CLEAR FILTER */
+
+  clearButton?.addEventListener("click", () => {
+
+    brandChecks.forEach(check => {
+      check.checked = false;
+    });
+
+    categoryChecks.forEach(check => {
+      check.checked = false;
+    });
+
+    if (minPrice) minPrice.value = "";
+    if (maxPrice) maxPrice.value = "";
+    if (stockOnly) stockOnly.checked = false;
+
+    applyFilters();
+  });
+
+
+  /* MOBILE FILTER DRAWER */
+
+  if (mobileTrigger && sidebar) {
+
+    let overlay = document.querySelector(".mobile-menu-overlay");
+
+    if (!overlay) {
+      overlay = document.createElement("div");
+      overlay.className = "mobile-menu-overlay";
+      document.body.appendChild(overlay);
+    }
+
+    let closeButton = sidebar.querySelector(".mobile-menu-close");
+
+    if (!closeButton) {
+      closeButton = document.createElement("button");
+      closeButton.type = "button";
+      closeButton.className = "mobile-menu-close";
+      closeButton.setAttribute("aria-label", "メニューを閉じる");
+      closeButton.textContent = "×";
+
+      sidebar.appendChild(closeButton);
+    }
+
+    function closeDrawer() {
+      document.body.classList.remove("mobile-menu-open");
+    }
+
+    mobileTrigger.addEventListener("click", () => {
+      document.body.classList.add("mobile-menu-open");
+    });
+
+    closeButton.addEventListener("click", event => {
+      event.stopPropagation();
+      closeDrawer();
+    });
+
+    overlay.addEventListener("click", closeDrawer);
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        closeDrawer();
+      }
+    });
+  }
+
+
+  /* INITIAL FILTER */
+
+  applyFilters();
+
 });

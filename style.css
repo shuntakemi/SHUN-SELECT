@@ -2260,3 +2260,130 @@ body.search-is-open {
   }
 
 }
+
+
+
+
+/* =========================================
+   MAN PAGE FILTER + RESULT TOOLBAR
+========================================= */
+.man-filter-panel {
+  width: 100%;
+  margin: 0 0 28px;
+}
+.man-filter-heading {
+  margin: 0 0 18px;
+  font-size: 11px;
+  letter-spacing: .15em;
+}
+.man-filter-group .menu-subnav {
+  display: none;
+}
+.man-filter-group.is-open .menu-subnav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.man-filter-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.man-filter-option input,
+.filter-stock input {
+  width: 13px;
+  height: 13px;
+  margin: 0;
+  accent-color: #111;
+}
+.man-price-filter {
+  padding: 20px 0 10px;
+}
+.man-price-label {
+  margin: 0 0 12px;
+  font-size: 11px;
+  letter-spacing: .1em;
+}
+.man-price-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.man-price-inputs input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  background: transparent;
+  padding: 10px 6px;
+  font-size: 11px;
+}
+.man-price-inputs span { font-size: 12px; }
+.filter-stock {
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
+}
+.filter-stock label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.man-filter-clear {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: transparent;
+  border: 1px solid #ccc;
+  font-size: 10px;
+  cursor: pointer;
+  transition: .3s;
+}
+.man-filter-clear:hover { background: #111; color: #fff; }
+.man-products-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 15px;
+}
+.man-filter-trigger {
+  display: none;
+  align-items: center;
+  gap: 7px;
+  border: 0;
+  padding: 8px 0;
+  background: transparent;
+  font-size: 11px;
+  cursor: pointer;
+}
+.man-filter-trigger svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+.product-result-count {
+  font-size: 11px;
+  color: #777;
+  letter-spacing: .04em;
+}
+#result-count { color: #111; }
+.product-item.filter-hidden { display: none !important; }
+.man-filter-result-empty { margin: 24px 0; font-size: 12px; }
+
+@media screen and (max-width: 767px) {
+  .man-products-toolbar { margin-bottom: 10px; }
+  .man-filter-trigger { display: flex; }
+  .man-filter-panel { margin-bottom: 24px; }
+  .man-filter-panel .man-filter-heading { display: block; }
+  .man-filter-panel .man-filter-group { display: block; }
+  .man-filter-panel .man-filter-group .menu-row { width: 100%; }
+  .man-filter-panel .man-filter-options { display: none; }
+  .man-filter-panel .man-filter-group.is-open .man-filter-options { display: flex !important; flex-direction: column; gap: 12px; }
+}
+

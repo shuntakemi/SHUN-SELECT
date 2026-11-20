@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Men's collection at SELECT SHOP.">
+  <title>MAN | SELECT SHOP</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body class="man-page">
+<div class="site-shell">
+
+
+    <div class="page-layout">
+      <!-- SIDEBAR -->
+<aside class="sidebar">
+
+  <!-- 固定部分：ロゴ・アイコン -->
+  <div class="sidebar-header">
+
+    <h2 class="index-logo">
+      <a href="#">SELECT SHOP</a>
+    </h2>
+
+    <div class="header-tools">
+      <button class="search-trigger" type="button" aria-label="検索を開く">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="10.8" cy="10.8" r="6.8"/>
+          <path d="m16 16 5 5"/>
+        </svg>
+      </button>
+
+      <a href="#" aria-label="Login">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="7.5" r="3.5"/>
+          <path d="M4.5 21c.5-4.2 3.4-6.5 7.5-6.5s7 2.3 7.5 6.5"/>
+        </svg>
+      </a>
+
+      <a href="#" aria-label="Cart">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M2.5 3h2.8l2.2 12.2h11.8l2-9H6"/>
+          <circle cx="9" cy="19.5" r="1.2"/>
+          <circle cx="18" cy="19.5" r="1.2"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- MENU ONLY -->
+  <div class="sidebar-scroll">
+
+    <!-- FILTER (replaces INDEX area) -->
+    <section class="man-filter-panel" id="man-filter-panel" aria-label="商品絞り込み">
+      <p class="man-filter-heading">FILTER</p>
+      <div class="menu-group man-filter-group">
+        <button class="menu-row menu-expand" type="button" aria-expanded="false">
+          <span class="menu-dot"></span><span class="menu-label">BRAND</span><span class="menu-arrow"></span>
+        </button>
+        <div class="menu-subnav man-filter-options" data-filter-group="brand">
+          <label class="man-filter-option"><input type="checkbox" value="BRAND 01"><span>BRAND 01</span></label>
+          <label class="man-filter-option"><input type="checkbox" value="BRAND 02"><span>BRAND 02</span></label>
+          <label class="man-filter-option"><input type="checkbox" value="BRAND 03"><span>BRAND 03</span></label>
+          <label class="man-filter-option"><input type="checkbox" value="BRAND 04"><span>BRAND 04</span></label>
+          <label class="man-filter-option"><input type="checkbox" value="BRAND 05"><span>BRAND 05</span></label>
+          <label class="man-filter-option"><input type="checkbox" value="BRAND 06"><span>BRAND 06</span></label>
+          <label class="man-filter-option"><input type="checkbox" value="BRAND 07"><span>BRAND 07</span></label>
+          <label class="man-filter-option"><input type="checkbox" value="BRAND 08"><span>BRAND 08</span></label>
+          <label class="man-filter-option"><input type="checkbox" value="BRAND 09"><span>BRAND 09</span></label>
+          <label class="man-filter-option"><input type="checkbox" value="BRAND 10"><span>BRAND 10</span></label>
+          <label class="man-filter-option"><input type="checkbox" value="BRAND 11"><span>BRAND 11</span></label>
+          <label class="man-filter-option"><input type="checkbox" value="BRAND 12"><span>BRAND 12</span></label>
+        </div>
+      </div>
+      <div class="menu-group man-filter-group">
+        <button class="menu-row menu-expand" type="button" aria-expanded="false">
+          <span class="menu-dot"></span><span class="menu-label">CATEGORY</span><span class="menu-arrow"></span>
+        </button>
+        <div class="menu-subnav man-filter-options" data-filter-group="category">
+          <label class="man-filter-option"><input type="checkbox" value="TOPS"><span>TOPS</span></label>
+          <label class="man-filter-option"><input type="checkbox" value="SHIRTS"><span>SHIRTS</span></label>
+          <label class="man-filter-option"><input type="checkbox" value="KNIT"><span>KNIT</span></label>
+          <label class="man-filter-option"><input type="checkbox" value="PANTS"><span>PANTS</span></label>
+          <label class="man-filter-option"><input type="checkbox" value="DENIM"><span>DENIM</span></label>
+          <label class="man-filter-option"><input type="checkbox" value="OUTER"><span>OUTER</span></label>
+          <label class="man-filter-option"><input type="checkbox" value="SHOES"><span>SHOES</span></label>
+          <label class="man-filter-option"><input type="checkbox" value="BAGS"><span>BAGS</span></label>
+          <label class="man-filter-option"><input type="checkbox" value="ACCESSORIES"><span>ACCESSORIES</span></label>
+        </div>
+      </div>
+      <div class="man-price-filter">
+        <p class="man-price-label">PRICE</p>
+        <div class="man-price-inputs">
+          <input type="number" id="min-price" inputmode="numeric" min="0" placeholder="￥ MIN" aria-label="最低価格">
+          <span>～</span>
+          <input type="number" id="max-price" inputmode="numeric" min="0" placeholder="￥ MAX" aria-label="最高価格">
+        </div>
+      </div>
+
+<!-- STOCK FILTER -->
+<div class="filter-stock">
+  <label>
+    <input type="checkbox" id="stock-only">
+    <span>在庫ありのみ表示</span>
+  </label>
+</div>
+
+      <button type="button" class="man-filter-clear" id="filter-clear">CLEAR</button>
+    </section>
+
+
+    <p class="index-title menu-title">MENU</p>
+
+    <nav class="menu-nav">
+
+      <a href="MAN.html" class="menu-row">
+        <span class="menu-dot"></span>
+        <span class="menu-label">MAN</span>
+      </a>
+
+      <a href="WOMAN.html" class="menu-row">
+        <span class="menu-dot"></span>
+        <span class="menu-label">WOMAN</span>
+      </a>
+
+      <!-- BRAND -->
+<div class="menu-group">
+  <button class="menu-row menu-expand" type="button" aria-expanded="false">
+    <span class="menu-dot"></span>
+    <span class="menu-label">BRAND</span>
+    <span class="menu-arrow"></span>
+  </button>
+
+  <div class="menu-subnav">
+    <a href="FEATURED BRANDS01.html" class="menu-sub-link">BRAND 01</a>
+    <a href="FEATURED BRANDS02.html" class="menu-sub-link">BRAND 02</a>
+    <a href="FEATURED BRANDS03.html" class="menu-sub-link">BRAND 03</a>
+    <a href="FEATURED BRANDS04.html" class="menu-sub-link">BRAND 04</a>
+    <a href="FEATURED BRANDS05.html" class="menu-sub-link">BRAND 05</a>
+    <a href="FEATURED BRANDS06.html" class="menu-sub-link">BRAND 06</a>
+    <a href="FEATURED BRANDS07.html" class="menu-sub-link">BRAND 07</a>
+    <a href="FEATURED BRANDS08.html" class="menu-sub-link">BRAND 08</a>
+    <a href="FEATURED BRANDS09.html" class="menu-sub-link">BRAND 09</a>
+    <a href="FEATURED BRANDS10.html" class="menu-sub-link">BRAND 10</a>
+    <a href="FEATURED BRANDS11.html" class="menu-sub-link">BRAND 11</a>
+    <a href="FEATURED BRANDS12.html" class="menu-sub-link">BRAND 12</a>
+  </div>
+</div>
+
+      <!-- CATEGORY -->
+      <div class="menu-group">
+        <button class="menu-row menu-expand" type="button" aria-expanded="false">
+          <span class="menu-dot"></span>
+          <span class="menu-label">CATEGORY</span>
+          <span class="menu-arrow"></span>
+        </button>
+
+        <div class="menu-subnav">
+          <a href="#" class="menu-sub-link">WEAR</a>
+          <a href="#" class="menu-sub-link">BAGS &amp; WALLETS</a>
+          <a href="#" class="menu-sub-link">SHOES</a>
+          <a href="#" class="menu-sub-link">ACCESSORIES</a>
+          <a href="#" class="menu-sub-link">FASHION GOODS</a>
+          <a href="#" class="menu-sub-link">LIFESTYLE</a>
+        </div>
+      </div>
+
+    </nav>
+
+  </div>
+<div class="mobile-shop-info">
+  <p>SHOP NAME</p>
+  <p>〒000-0000 東京都〇〇区〇〇</p>
+  <p>TEL：000-000-0000</p>
+  <p>OPEN：10:00 - 19:00</p>
+</div>
+</aside>
+
+      <!-- MAN CONTENT -->
+      <main class="main-content man-content">
+        <section class="content-section" id="man-items">
+          <div class="man-breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">HOME</a>
+            <span aria-hidden="true">›</span>
+            <span class="breadcrumb-current">MAN</span>
+          </div>
+          <div class="section-heading">
+            <div>
+              <h2>MAN</h2>
+              <p>MEN'S COLLECTION</p>
+            </div>
+          </div>
+
+          <p class="man-filter-result-empty" hidden>該当する商品がありません。</p>
+          <div class="man-products-toolbar">
+            <button type="button" class="man-filter-trigger" aria-label="絞り込みを開く" aria-controls="man-filter-panel">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16M7 12h10M10 19h4"/></svg><span>絞り込み</span>
+            </button>
+            <div class="product-result-count" aria-live="polite"><span id="result-count">0</span>件</div>
+          </div>
+          <div class="product-grid">
+            <article class="product-item" data-brand="BRAND 01" data-category="TOPS" data-price="12000" data-stock="true">
+              <a href="#">
+                <img src="images/man-01.jpg" alt="Men's product 01">
+                <p class="product-brand">BRAND NAME</p>
+                <h3>PRODUCT NAME 01</h3>
+                <p class="product-price">¥00,000</p>
+              </a>
+            </article>
+            <article class="product-item" data-brand="BRAND 02" data-category="PANTS" data-price="18000" data-stock="true">
+              <a href="#">
+                <img src="images/man-02.jpg" alt="Men's product 02">
+                <p class="product-brand">BRAND NAME</p>
+                <h3>PRODUCT NAME 02</h3>
+                <p class="product-price">¥00,000</p>
+              </a>
+            </article>
+            <article class="product-item" data-brand="BRAND 01" data-category="KNIT" data-price="15000" data-stock="false">
+              <a href="#">
+                <img src="images/man-03.jpg" alt="Men's product 03">
+                <p class="product-brand">BRAND NAME</p>
+                <h3>PRODUCT NAME 03</h3>
+                <p class="product-price">¥00,000</p>
+              </a>
+            </article>
+            <article class="product-item" data-brand="BRAND 03" data-category="OUTER" data-price="28000" data-stock="true">
+              <a href="#">
+                <img src="images/man-04.jpg" alt="Men's product 04">
+                <p class="product-brand">BRAND NAME</p>
+                <h3>PRODUCT NAME 04</h3>
+                <p class="product-price">¥00,000</p>
+              </a>
+            </article>
+          </div>
+        </section>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+
+    <div class="footer-information">
+
+      <div class="footer-info-item">
+        <h3>CONTACTS</h3>
+        <a href="mailto:info@selectshop.jp">info@selectshop.jp</a>
+        <p>000-000-0000</p>
+      </div>
+
+      <div class="footer-info-item">
+        <h3>SOCIAL MEDIA</h3>
+        <a href="#">INSTAGRAM</a>
+        <a href="#">FACEBOOK</a>
+      </div>
+
+      <div class="footer-info-item">
+        <h3>TAKE THE FIRST STEP</h3>
+        <a href="#">CONTACT US ↗</a>
+      </div>
+
+      <div class="footer-info-item">
+        <h3>OPENING HOURS</h3>
+        <p>10:00 - 19:00</p>
+        <p>CLOSED : WEDNESDAY</p>
+      </div>
+
+    </div>
+
+    <div class="footer-big-logo">
+      <a href="#">SELECT SHOP</a>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© SELECT SHOP. ALL RIGHTS RESERVED.</p>
+
+      <div class="footer-bottom-links">
+        <a href="#">PRIVACY POLICY</a>
+        <a href="#">SHOPPING GUIDE</a>
+        <a href="#">CONTACT</a>
+      </div>
+    </div>
+
+  </footer>
+  <div class="category-cursor" aria-hidden="true"></div>
+</body>
+</html>
