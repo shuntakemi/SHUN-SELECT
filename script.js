@@ -644,18 +644,20 @@ if (
 
   if (menuButton && mobileSidebar) {
 
-let overlay = document.querySelector(".mobile-menu-overlay");
-const siteShell = document.querySelector(".site-shell");
+    let overlay = document.querySelector(".mobile-menu-overlay");
+    const siteShell = document.querySelector(".site-shell");
 
-if (!overlay) {
-  overlay = document.createElement("div");
-  overlay.className = "mobile-menu-overlay";
-}
+    if (!overlay) {
+      overlay = document.createElement("div");
+      overlay.className = "mobile-menu-overlay";
+    }
 
-// overlayをsite-shellの中に移動
-if (siteShell && overlay.parentElement !== siteShell) {
-  siteShell.appendChild(overlay);
-}
+    // overlayをsite-shell内へ移動する。
+    // site-shell自体がz-index: 2のスタッキングコンテキストなので、
+    // body直下に置くとsidebarより手前に重なってしまうため。
+    if (siteShell && overlay.parentElement !== siteShell) {
+      siteShell.appendChild(overlay);
+    }
 
     // 閉じるボタンを作成
     let closeButton = mobileSidebar.querySelector(".mobile-menu-close");
@@ -792,6 +794,7 @@ filterPanel.addEventListener("click", event => {
   const maxPrice = document.getElementById("max-price");
   const stockOnly = document.getElementById("stock-only");
   const clearButton = document.getElementById("filter-clear");
+  const searchButton = document.getElementById("filter-search");
   const resultCount = document.getElementById("result-count");
   const emptyMessage = document.querySelector(".man-filter-result-empty");
   const mobileTrigger = document.querySelector(".man-filter-trigger");
@@ -831,11 +834,11 @@ filterPanel.addEventListener("click", event => {
     if (emptyMessage) emptyMessage.hidden = hits !== 0;
   }
 
-  brandChecks.forEach(check => check.addEventListener("change", applyFilters));
-  categoryChecks.forEach(check => check.addEventListener("change", applyFilters));
-  minPrice?.addEventListener("input", applyFilters);
-  maxPrice?.addEventListener("input", applyFilters);
-  stockOnly?.addEventListener("change", applyFilters);
+  // 条件を選んでいる間は商品一覧を更新しない。SEARCHでまとめて反映する。
+  searchButton?.addEventListener("click", () => {
+    applyFilters();
+    closeFilterSheet();
+  });
 
   clearButton?.addEventListener("click", () => {
     brandChecks.forEach(check => check.checked = false);
@@ -843,7 +846,6 @@ filterPanel.addEventListener("click", event => {
     if (minPrice) minPrice.value = "";
     if (maxPrice) maxPrice.value = "";
     if (stockOnly) stockOnly.checked = false;
-    applyFilters();
   });
 
   // 絞り込みボトムシートの開閉
