@@ -702,8 +702,14 @@ if (
       event.stopPropagation();
     });
 
-    // 背景クリックで閉じる
-    overlay.addEventListener("click", closeMenu);
+    // 背景クリック時：開いている画面だけを閉じる
+overlay.addEventListener("click", () => {
+  if (document.body.classList.contains("man-filter-open")) {
+    document.body.classList.remove("man-filter-open");
+  } else {
+    closeMenu();
+  }
+});
 
     // ESCキーで閉じる
     document.addEventListener("keydown", event => {
@@ -769,6 +775,10 @@ if (
 document.addEventListener("DOMContentLoaded", () => {
   const filterPanel = document.querySelector(".man-filter-panel");
   if (!filterPanel) return;
+  // FILTER内部をタップしても背景クリック扱いにしない
+filterPanel.addEventListener("click", event => {
+  event.stopPropagation();
+});
 
   const productCards = Array.from(document.querySelectorAll(".product-item"));
   const brandChecks = filterPanel.querySelectorAll('[data-filter-group="brand"] input[type="checkbox"]');
