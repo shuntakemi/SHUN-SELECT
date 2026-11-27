@@ -306,14 +306,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchClose = document.querySelector(".search-close");
   const searchClear = document.querySelector(".search-clear");
   const searchTriggers = document.querySelectorAll(".search-trigger");
-  const desktopSearch = window.matchMedia("(min-width: 768px)");
-
-  if (
-    searchScreen &&
-    searchInput &&
-    searchResults &&
-    desktopSearch.matches
-  ) {
+if (
+  searchScreen &&
+  searchInput &&
+  searchResults
+) {
     const products = Array.from(
       document.querySelectorAll(".product-item")
     ).map(item => {

@@ -2025,12 +2025,6 @@ body.search-is-open {
   body.mobile-menu-open .header {
     z-index: 2003 !important;
   }
-
-  /* 検索画面はスマホでは非表示 */
-
-  .search-screen {
-    display: none !important;
-  }
 }
 
 
@@ -2847,4 +2841,30 @@ body.search-is-open {
 .man-filter-panel .menu-expand:hover .menu-arrow,
 .man-filter-panel .menu-expand[aria-expanded="true"] .menu-arrow {
   transform: rotate(225deg);
+}
+
+/* =========================================
+   MOBILE SEARCH
+========================================= */
+@media screen and (max-width: 767px) {
+  .search-screen {
+    display: flex !important;
+    align-items: flex-start;
+    padding: 15px 10px;
+    z-index: 100000;
+  }
+
+  .search-screen-inner {
+    width: 100%;
+    max-height: calc(100dvh - 30px);
+    margin: 0;
+    padding: 22px 18px 28px;
+    border-radius: 12px;
+  }
+
+  .search-suggestions,
+  .search-history-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 12px;
+  }
 }
