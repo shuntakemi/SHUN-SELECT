@@ -644,13 +644,18 @@ if (
 
   if (menuButton && mobileSidebar) {
 
-    let overlay = document.querySelector(".mobile-menu-overlay");
+let overlay = document.querySelector(".mobile-menu-overlay");
+const siteShell = document.querySelector(".site-shell");
 
-    if (!overlay) {
-      overlay = document.createElement("div");
-      overlay.className = "mobile-menu-overlay";
-      document.body.appendChild(overlay);
-    }
+if (!overlay) {
+  overlay = document.createElement("div");
+  overlay.className = "mobile-menu-overlay";
+}
+
+// overlayをsite-shellの中に移動
+if (siteShell && overlay.parentElement !== siteShell) {
+  siteShell.appendChild(overlay);
+}
 
     // 閉じるボタンを作成
     let closeButton = mobileSidebar.querySelector(".mobile-menu-close");
