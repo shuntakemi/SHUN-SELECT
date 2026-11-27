@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================
@@ -635,7 +634,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  
   /* =========================================
      07. MOBILE MENU OPEN / CLOSE
      - 背景を暗くする
@@ -671,12 +669,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function openMenu() {
+      document.body.classList.remove("man-filter-open");
       document.body.classList.add("mobile-menu-open");
       menuButton.setAttribute("aria-expanded", "true");
     }
 
     function closeMenu() {
       document.body.classList.remove("mobile-menu-open");
+      document.body.classList.remove("man-filter-open");
       menuButton.setAttribute("aria-expanded", "false");
     }
 
@@ -712,7 +712,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("keydown", event => {
       if (
         event.key === "Escape" &&
-        document.body.classList.contains("mobile-menu-open")
+        (document.body.classList.contains("mobile-menu-open") ||
+         document.body.classList.contains("man-filter-open"))
       ) {
         closeMenu();
       }
@@ -725,7 +726,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-    /* =========================================
+
+
+  /* =========================================
      08. PAGE TOP
   ========================================= */
 
@@ -763,7 +766,7 @@ document.addEventListener("DOMContentLoaded", () => {
 /* =========================
    MAN FILTER FUNCTION
    - Brand / Category / Price / Stock
-   - Live hit count / Clear all / Mobile drawer
+   - Live hit count / Clear all / Mobile bottom sheet
 ========================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -780,7 +783,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultCount = document.getElementById("result-count");
   const emptyMessage = document.querySelector(".man-filter-result-empty");
   const mobileTrigger = document.querySelector(".man-filter-trigger");
-  const sidebar = document.querySelector(".sidebar");
+  const chipFilterButton = document.getElementById("man-chip-filter-button");
+  const filterCloseButton = filterPanel.querySelector(".man-filter-close");
 
   function applyFilters() {
     const selectedBrands = Array.from(brandChecks)
@@ -815,8 +819,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (emptyMessage) emptyMessage.hidden = hits !== 0;
   }
 
-
-  // FILTER accordion: use the existing .menu-expand accordion handler.
   brandChecks.forEach(check => check.addEventListener("change", applyFilters));
   categoryChecks.forEach(check => check.addEventListener("change", applyFilters));
   minPrice?.addEventListener("input", applyFilters);
@@ -832,38 +834,21 @@ document.addEventListener("DOMContentLoaded", () => {
     applyFilters();
   });
 
-  // Mobile: open the sidebar filter panel using the filter toolbar button.
-  if (mobileTrigger && sidebar) {
-    let overlay = document.querySelector(".mobile-menu-overlay");
-    if (!overlay) {
-      overlay = document.createElement("div");
-      overlay.className = "mobile-menu-overlay";
-      document.body.appendChild(overlay);
-    }
+  // 絞り込みボトムシートの開閉
+  const openFilterSheet = event => {
+    event?.stopPropagation();
+    document.body.classList.remove("mobile-menu-open");
+    document.body.classList.add("man-filter-open");
+  };
 
-    let closeButton = sidebar.querySelector(".mobile-menu-close");
-    if (!closeButton) {
-      closeButton = document.createElement("button");
-      closeButton.type = "button";
-      closeButton.className = "mobile-menu-close";
-      closeButton.setAttribute("aria-label", "メニューを閉じる");
-      closeButton.textContent = "×";
-      sidebar.appendChild(closeButton);
-    }
+  const closeFilterSheet = event => {
+    event?.stopPropagation();
+    document.body.classList.remove("man-filter-open");
+  };
 
-    const closeDrawer = () => document.body.classList.remove("mobile-menu-open");
-    mobileTrigger.addEventListener("click", () => {
-      document.body.classList.add("mobile-menu-open");
-    });
-    closeButton.addEventListener("click", event => {
-      event.stopPropagation();
-      closeDrawer();
-    });
-    overlay.addEventListener("click", closeDrawer);
-    document.addEventListener("keydown", event => {
-      if (event.key === "Escape") closeDrawer();
-    });
-  }
+  mobileTrigger?.addEventListener("click", openFilterSheet);
+  chipFilterButton?.addEventListener("click", openFilterSheet);
+  filterCloseButton?.addEventListener("click", closeFilterSheet);
 
   applyFilters();
 });
@@ -876,7 +861,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const panel = document.querySelector(".man-filter-panel");
   const chipBar = document.getElementById("man-mobile-active-filters");
   const chipScroll = document.getElementById("man-mobile-chip-scroll");
-  const chipFilterButton = document.getElementById("man-chip-filter-button");
   if (!panel || !chipBar || !chipScroll) return;
   const brands = panel.querySelectorAll('[data-filter-group="brand"] input[type="checkbox"]');
   const categories = panel.querySelectorAll('[data-filter-group="category"] input[type="checkbox"]');
@@ -896,22 +880,49 @@ document.addEventListener("DOMContentLoaded", () => {
     close.textContent = "×";
     close.addEventListener("click", remove);
     chip.append(text, close);
-    chipBar.appendChild(chip);
+    chipScroll.appendChild(chip);
   }
 
   function renderChips() {
     chipScroll.replaceChildren();
-    brands.forEach(input => { if (input.checked) addChip(input.value, () => { input.checked = false; input.dispatchEvent(new Event("change", { bubbles: true })); renderChips(); }); });
-    categories.forEach(input => { if (input.checked) addChip(input.value, () => { input.checked = false; input.dispatchEvent(new Event("change", { bubbles: true })); renderChips(); }); });
+    brands.forEach(input => {
+      if (input.checked) {
+        addChip(input.value, () => {
+          input.checked = false;
+          input.dispatchEvent(new Event("change", { bubbles: true }));
+          renderChips();
+        });
+      }
+    });
+    categories.forEach(input => {
+      if (input.checked) {
+        addChip(input.value, () => {
+          input.checked = false;
+          input.dispatchEvent(new Event("change", { bubbles: true }));
+          renderChips();
+        });
+      }
+    });
     if (minInput?.value || maxInput?.value) {
       const low = minInput?.value ? `¥${Number(minInput.value).toLocaleString()}` : "下限なし";
       const high = maxInput?.value ? `¥${Number(maxInput.value).toLocaleString()}` : "上限なし";
-      addChip(`${low} ～ ${high}`, () => { if (minInput) minInput.value = ""; if (maxInput) maxInput.value = ""; minInput?.dispatchEvent(new Event("input", { bubbles: true })); renderChips(); });
+      addChip(`${low} ～ ${high}`, () => {
+        if (minInput) minInput.value = "";
+        if (maxInput) maxInput.value = "";
+        minInput?.dispatchEvent(new Event("input", { bubbles: true }));
+        renderChips();
+      });
     }
-    if (stock?.checked) addChip("在庫あり", () => { stock.checked = false; stock.dispatchEvent(new Event("change", { bubbles: true })); renderChips(); });
+    if (stock?.checked) {
+      addChip("在庫あり", () => {
+        stock.checked = false;
+        stock.dispatchEvent(new Event("change", { bubbles: true }));
+        renderChips();
+      });
+    }
     chipBar.classList.toggle("has-chips", chipScroll.children.length > 0);
   }
-  chipFilterButton?.addEventListener("click", () => { document.body.classList.add("mobile-menu-open"); });
+
   brands.forEach(input => input.addEventListener("change", renderChips));
   categories.forEach(input => input.addEventListener("change", renderChips));
   minInput?.addEventListener("input", renderChips);
